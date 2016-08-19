@@ -19,7 +19,8 @@
                 <li id="center-xs" {!! (Request::is('/') ? 'class="active"' : '') !!}><a href="#" class="hvr-sweep-to-right tile1">New</a></li>
                 <li id="center-xs" ><a href="{{ route('categorias.index') }}" class="hvr-sweep-to-right tile2">Categoria</a></li>
                 <li id="center-xs" ><a href="{{ route('treinamentos.index') }}" class="hvr-sweep-to-right tile3">Treinamento</a></li>
-                <li id="center-xs" {!! (Request::is('about') ? 'class="active"' : '') !!}><a href="#" class="hvr-sweep-to-right tile4">About</a></li>
+
+                <li id="center-xs" ><a href="{{ route('exames.index') }}" class="hvr-sweep-to-right tile3">Exames</a></li>
                 <li class="visible-xs"><a href="#" class="hvr-sweep-to-right instagram"><i class="fa fa-instagram fa-lg"></i></a></li>
                 <li class="visible-xs"><a href="#" class="hvr-sweep-to-right twitter"><i class="fa fa-twitter fa-lg"></i></a></li>
                 <li class="visible-xs"><a href="#" class="hvr-sweep-to-right facebook"><i class="fa fa-facebook fa-lg"></i></a></li>

@@ -5,7 +5,7 @@
 		<div class="col-lg-4 text-center"></div>
 		<div class="col-lg-4 text-center">
 			<h4 class='intro-text text-center'>
-				Site de Controle de encomendas 
+				Site de Controle de Equipamento de Proteção Individual
 			</h4>
 		</div>
 		<div class="col-lg-4 text-center"></div>

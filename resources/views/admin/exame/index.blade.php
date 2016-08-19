@@ -1,7 +1,7 @@
 @extends('admin/layouts/default')
 
 @section('titulo')
-Lista de Treinamentos
+Lista de Exames
 @stop
 
 
@@ -17,25 +17,25 @@ Lista de Treinamentos
 		<tr class="filters">
 			<th>ID</th>
 			<th>Nome</th>
-			<th>Descrição</th>
+			<th>Sigla</th>
+			<th>Duração</th>
 			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
-		@if(isset($treinamentos) && count($treinamentos) > 0 )
-		@foreach($treinamentos as $treinamento)
+		@if(isset($exames) && count($exames) > 0 )
+		@foreach($exames as $exame)
 		<tr>
-			<td>{{ $treinamento->id }}</td>
-			<td>{{ $treinamento->nome }}</td>
+			<td>{{ $exame->id }}</td>
+			<td>{{ $exame->nome }}</td>
+			<td>{{ $exame->sigla }}</td>
+			<td>{{ $exame->duracao }}</td>
 			<td>
-				2
-			</td>
-			<td>
-				<form method="POST" action="{{ route('treinamentos.destroy',$treinamento->id) }}">
+				<form method="POST" action="{{ route('exames.destroy',$exame->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<button type="submit" class="btn btn-danger pull-left">delete</button>		
 				</form>
-				<a href="{{ route('treinamentos.edit', $treinamento->id) }}" class="btn btn-info">
+				<a href="{{ route('exames.edit', $exame->id) }}" class="btn btn-info">
 					<i class="fa fa-pencil-square-o">edit</i>
 				</a>
 			</td>
@@ -46,13 +46,13 @@ Lista de Treinamentos
 	<tfoot>
 		<tr>
 			<td colspan="4" class="text-right">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#maddtreinamento">Cadastrar</button>
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#maddExame">Cadastrar</button>
 			</td>
 		</tr>
 	</tfoot>
 </table>
 
-@include('admin/treinamento/criar')
+@include('admin/exame/criar')
 
 
 @stop
@@ -65,15 +65,15 @@ Lista de Treinamentos
         // process the form
         $.ajax({
         	type        : 'POST', 
-        	url         : "{{ route('treinamentos.store') }}", 
-        	data: $('#faddTreinamento').serialize(),
+        	url         : "{{ route('exames.store') }}", 
+        	data: $('#faddExame').serialize(),
         	success: function(data)
         	{
         		if (data.code != 200) {
         			$('#msgs').html("<div class='alert alert-danger'>"+data.msg+"</div>");
         		}else{
-        			$('#faddTreinamento')[0].reset();
-        			$('#maddtreinamento').modal('hide');
+        			$('#faddExame')[0].reset();
+        			$('#maddExame').modal('hide');
         		}
            },error: function(msg){
                     console.log(msg);
