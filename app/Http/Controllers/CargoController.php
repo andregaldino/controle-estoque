@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Cargo;
 
 class CargoController extends Controller
 {
@@ -16,7 +17,8 @@ class CargoController extends Controller
      */
     public function index()
     {
-        //
+        $cargos = Cargo::all();
+        return View('admin.cargo.index',compact('cargos'));
     }
 
     /**
@@ -37,18 +39,20 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        try {
+            $input = $request->all();
+            $cargo = new cargo;
+            $cargo->nome = $input['nome'];
+            $cargo->descricao = $input['descricao'];
+            $cargo->save();
+            return response()->json(
+                ['code' => 200, 'msg' => 'Sucesso']
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                ['code' => 400, 'msg' => $e->getMessage()]
+            );
+        }
     }
 
     /**
@@ -59,7 +63,12 @@ class CargoController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $cargo = Cargo::findOrFail($id);
+            return View('admin.cargo.editar',compact('cargo'));
+        } catch (Exception $e) {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -71,7 +80,20 @@ class CargoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $input = $request->all();
+            $cargo = Cargo::findOrFail($id);
+            $cargo->nome = $input['nome'];
+            $cargo->descricao = $input['descricao'];
+            $cargo->save();
+
+            return redirect()->route('cargos.index');
+
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error', $e->getMessage())
+            ;
+        }
     }
 
     /**
@@ -82,6 +104,13 @@ class CargoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $cargo = Cargo::findOrFail($id);
+            $cargo->delete();
+            return redirect()->back();
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error',$e->getMessage());
+        }
     }
 }

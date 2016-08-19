@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Empresa;
 
 class EmpresaController extends Controller
 {
@@ -16,7 +17,8 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        $empresas = Empresa::all();
+        return View('admin.empresa.index',compact('empresas'));
     }
 
     /**
@@ -37,18 +39,21 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        try {
+            $input = $request->all();
+            $empresa = new Empresa;
+            $empresa->nome = $input['nome'];
+            $empresa->razao = $input['razao'];
+            $empresa->cnpj = $input['cnpj'];
+            $empresa->save();
+            return response()->json(
+                ['code' => 200, 'msg' => 'Sucesso']
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                ['code' => 400, 'msg' => $e->getMessage()]
+            );
+        }
     }
 
     /**
@@ -59,7 +64,12 @@ class EmpresaController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $empresa = Empresa::findOrFail($id);
+            return View('admin.empresa.editar',compact('empresa'));
+        } catch (Exception $e) {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -71,7 +81,21 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $input = $request->all();
+            $empresa = Empresa::findOrFail($id);
+            $empresa->nome = $input['nome'];
+            $empresa->razao = $input['razao'];
+            $empresa->cnpj = $input['cnpj'];
+            $empresa->save();
+
+            return redirect()->route('empresas.index');
+
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error', $e->getMessage())
+            ;
+        }
     }
 
     /**
@@ -82,6 +106,13 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $empresa = Empresa::findOrFail($id);
+            $empresa->delete();
+            return redirect()->back();
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error',$e->getMessage());
+        }
     }
 }

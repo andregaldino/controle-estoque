@@ -21,6 +21,8 @@
                 <li id="center-xs" ><a href="{{ route('treinamentos.index') }}" class="hvr-sweep-to-right tile3">Treinamento</a></li>
 
                 <li id="center-xs" ><a href="{{ route('exames.index') }}" class="hvr-sweep-to-right tile3">Exames</a></li>
+                <li id="center-xs" ><a href="{{ route('cargos.index') }}" class="hvr-sweep-to-right tile3">Cargos</a></li>
+                <li id="center-xs" ><a href="{{ route('empresas.index') }}" class="hvr-sweep-to-right tile3">Empresas</a></li>
                 <li class="visible-xs"><a href="#" class="hvr-sweep-to-right instagram"><i class="fa fa-instagram fa-lg"></i></a></li>
                 <li class="visible-xs"><a href="#" class="hvr-sweep-to-right twitter"><i class="fa fa-twitter fa-lg"></i></a></li>
                 <li class="visible-xs"><a href="#" class="hvr-sweep-to-right facebook"><i class="fa fa-facebook fa-lg"></i></a></li>
