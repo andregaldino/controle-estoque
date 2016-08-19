@@ -13,3 +13,4 @@
 
 Route::get('/', ['as'=> 'index', 'uses' => 'FrontendController@index']);
 Route::resource('categorias','CategoriaController');
+Route::resource('treinamentos','TreinamentoController');

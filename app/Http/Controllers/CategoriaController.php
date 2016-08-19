@@ -55,17 +55,6 @@ class CategoriaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -73,7 +62,12 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $categoria = Categoria::findOrFail($id);
+            return View('admin.categoria.editar',compact('categoria'));
+        } catch (Exception $e) {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -85,7 +79,19 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $input = $request->all();
+            $categoria = Categoria::findOrFail($id);
+            $categoria->nome = $input['nome'];
+            $categoria->save();
+
+            return redirect()->route('categorias.index');
+
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error', $e->getMessage())
+            ;
+        }
     }
 
     /**
@@ -96,6 +102,13 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $categoria = Categoria::findOrFail($id);
+            $categoria->delete();
+            return redirect()->back();
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error',$e->getMessage());
+        }
     }
 }

@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             <ul class="nav nav-justified">
-                <li><a href="/" class="navbar-brand">カラフル</a></li>
+                <li><a href="/" class="navbar-brand">Painel Administrativo</a></li>
             </ul>
         </div>
 
@@ -17,8 +17,8 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                 <li id="center-xs" {!! (Request::is('/') ? 'class="active"' : '') !!}><a href="#" class="hvr-sweep-to-right tile1">New</a></li>
-                <li id="center-xs" {!! (Request::is('popular') ? 'class="active"' : '') !!}><a href="#" class="hvr-sweep-to-right tile2">Popular</a></li>
-                <li id="center-xs" {!! (Request::is('create') ? 'class="active"' : '') !!}><a href="#" class="hvr-sweep-to-right tile3">Create</a></li>
+                <li id="center-xs" ><a href="{{ route('categorias.index') }}" class="hvr-sweep-to-right tile2">Categoria</a></li>
+                <li id="center-xs" ><a href="{{ route('treinamentos.index') }}" class="hvr-sweep-to-right tile3">Treinamento</a></li>
                 <li id="center-xs" {!! (Request::is('about') ? 'class="active"' : '') !!}><a href="#" class="hvr-sweep-to-right tile4">About</a></li>
                 <li class="visible-xs"><a href="#" class="hvr-sweep-to-right instagram"><i class="fa fa-instagram fa-lg"></i></a></li>
                 <li class="visible-xs"><a href="#" class="hvr-sweep-to-right twitter"><i class="fa fa-twitter fa-lg"></i></a></li>

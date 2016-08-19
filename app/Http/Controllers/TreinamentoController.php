@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Treinamento;
 
 class TreinamentoController extends Controller
 {
@@ -16,7 +17,8 @@ class TreinamentoController extends Controller
      */
     public function index()
     {
-        //
+        $treinamentos = Treinamento::all();
+        return View('admin.treinamento.index',compact('treinamentos'));
     }
 
     /**
@@ -37,18 +39,20 @@ class TreinamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        try {
+            $input = $request->all();
+            $treinamento = new Treinamento;
+            $treinamento->nome = $input['nome'];
+            $treinamento->descricao = $input['descricao'];
+            $treinamento->save();
+            return response()->json(
+                ['code' => 200, 'msg' => 'Sucesso']
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                ['code' => 400, 'msg' => $e->getMessage()]
+            );
+        }
     }
 
     /**
@@ -59,7 +63,12 @@ class TreinamentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $treinamento = Treinamento::findOrFail($id);
+            return View('admin.treinamento.editar',compact('treinamento'));
+        } catch (Exception $e) {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -71,7 +80,20 @@ class TreinamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $input = $request->all();
+            $treinamento = Treinamento::findOrFail($id);
+            $treinamento->nome = $input['nome'];
+            $treinamento->descricao = $input['descricao'];
+            $treinamento->save();
+
+            return redirect()->route('treinamentos.index');
+
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error', $e->getMessage())
+            ;
+        }
     }
 
     /**
@@ -82,6 +104,13 @@ class TreinamentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $treinamento = Treinamento::findOrFail($id);
+            $treinamento->delete();
+            return redirect()->back();
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error',$e->getMessage());
+        }
     }
 }

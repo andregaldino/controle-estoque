@@ -1,28 +1,44 @@
-<div class="modal fade" id="categoriaeditar" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title text-center">Editar de Categoria</h4>
-      </div>
-      <form  class="form-horizontal" id="editarCategoria">
-        <div class="modal-body">
-          
-         <div class="form-group">
-          <label class="control-label col-md-2" for="email">Nome:</label>
-          <div class="col-md-10">
-            <input type="text" class="form-control" name="nome" id="nome">
-          </div>
-          
-        </div>
+@extends('admin/layouts/default')
 
-        
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-default">Alterar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </form>
+@section('titulo')
+Editar Categoria
+@stop
+
+
+@section('css')
+
+@stop
+
+@section('conteudo')
+<form class="form-horizontal" role="form" method="post" action="{{ route('categorias.update',$categoria->id) }}">
+  <input type="hidden" name="_method" value="PUT" />
+
+  <div class="form-group">
+    <label for="slug" class="col-sm-2 control-label">ID</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" value="{{$categoria->id}}"  readonly  />
+
+    </div>
   </div>
-</div>
-</div>
+  <div class="form-group">
+    <label for="slug" class="col-sm-2 control-label">Nome</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="nome" value="{{$categoria->nome}}"  />
+
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <a class="btn btn-danger" href="{{route('categorias.index')}}">
+        Cancelar
+      </a>
+      <button type="submit" class="btn btn-success">
+        Alterar
+      </button>
+    </div>
+  </div>
+</form>
+@stop
