@@ -21,7 +21,7 @@
           </div>          
         </div>
         <div class="form-group">
-          <label class="control-label col-md-2" for="email">Descrição:</label>
+          <label class="control-label col-md-2" for="email">Duração:</label>
           <div class="col-md-10">
             <input type="number" class="form-control" name="duracao" id="duracao">
           </div>

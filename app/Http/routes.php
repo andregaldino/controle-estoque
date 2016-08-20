@@ -17,3 +17,5 @@ Route::resource('treinamentos','TreinamentoController');
 Route::resource('exames','ExameController');
 Route::resource('cargos','CargoController');
 Route::resource('empresas','EmpresaController');
+Route::resource('funcionarios','FuncionarioController');
+

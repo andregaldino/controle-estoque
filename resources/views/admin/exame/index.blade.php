@@ -45,7 +45,7 @@ Lista de Exames
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="4" class="text-right">
+			<td colspan="5" class="text-right">
 				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#maddExame">Cadastrar</button>
 			</td>
 		</tr>

@@ -1,7 +1,7 @@
 @extends('admin/layouts/default')
 
 @section('titulo')
-Lista de Empresas
+Lista de Funcionarios
 @stop
 
 
@@ -17,25 +17,27 @@ Lista de Empresas
 		<tr class="filters">
 			<th>ID</th>
 			<th>Nome</th>
-			<th>Razão Social</th>
-			<th>CNPJ</th>
+			<th>CPF</th>
+			<th>Cargo</th>
+			<th>Empresa</th>
 			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
-		@if(isset($empresas) && count($empresas) > 0 )
-		@foreach($empresas as $empresa)
+		@if(isset($funcionarios) && count($funcionarios) > 0 )
+		@foreach($funcionarios as $funcionario)
 		<tr>
-			<td>{{ $empresa->id }}</td>
-			<td>{{ $empresa->nome }}</td>
-			<td>{{ $empresa->razao }}</td>
-			<td>{{ $empresa->cnpj }}</td>
+			<td>{{ $funcionario->id }}</td>
+			<td>{{ $funcionario->nome }}</td>
+			<td>{{ $funcionario->cpf }}</td>
+			<td>{{ $funcionario->cargo[0]->nome or "Nenhuma funcao alocada" }}</td>
+			<td>{{ $funcionario->empresa->nome or "Nenhuma empresa alocada" }}</td>
 			<td>
-				<form method="POST" action="{{ route('empresas.destroy',$empresa->id) }}">
+				<form method="POST" action="{{ route('funcionarios.destroy',$funcionario->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<button type="submit" class="btn btn-danger pull-left">delete</button>		
 				</form>
-				<a href="{{ route('empresas.edit', $empresa->id) }}" class="btn btn-info">
+				<a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="btn btn-info">
 					<i class="fa fa-pencil-square-o">edit</i>
 				</a>
 			</td>
@@ -45,14 +47,14 @@ Lista de Empresas
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="5" class="text-right">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#maddEmpresa">Cadastrar</button>
+			<td colspan="6" class="text-right">
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#maddFuncionario">Cadastrar</button>
 			</td>
 		</tr>
 	</tfoot>
 </table>
 
-@include('admin/empresa/criar')
+@include('admin/funcionario/criar')
 
 
 @stop
@@ -65,15 +67,15 @@ Lista de Empresas
         // process the form
         $.ajax({
         	type        : 'POST', 
-        	url         : "{{ route('empresas.store') }}", 
-        	data: $('#faddEmpresa').serialize(),
+        	url         : "{{ route('funcionarios.store') }}", 
+        	data: $('#faddFuncionario').serialize(),
         	success: function(data)
         	{
         		if (data.code != 200) {
         			$('#msgs').html("<div class='alert alert-danger'>"+data.msg+"</div>");
         		}else{
-        			$('#faddEmpresa')[0].reset();
-        			$('#maddEmpresa').modal('hide');
+        			$('#faddFuncionario')[0].reset();
+        			$('#maddFuncionario').modal('hide');
         		}
            },error: function(msg){
                     console.log(msg);
