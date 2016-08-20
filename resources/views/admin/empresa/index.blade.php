@@ -19,6 +19,7 @@ Lista de Empresas
 			<th>Nome</th>
 			<th>Razão Social</th>
 			<th>CNPJ</th>
+			<th>Qntd Funcionarios</th>
 			<th>Ações</th>
 		</tr>
 	</thead>
@@ -30,6 +31,7 @@ Lista de Empresas
 			<td>{{ $empresa->nome }}</td>
 			<td>{{ $empresa->razao }}</td>
 			<td>{{ $empresa->cnpj }}</td>
+			<td>{{ $empresa->funcionarios->count()}}</td>
 			<td>
 				<form method="POST" action="{{ route('empresas.destroy',$empresa->id) }}">
 					<input name="_method" type="hidden" value="DELETE">

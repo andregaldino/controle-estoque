@@ -18,4 +18,8 @@ Route::resource('exames','ExameController');
 Route::resource('cargos','CargoController');
 Route::resource('empresas','EmpresaController');
 Route::resource('funcionarios','FuncionarioController');
-
+Route::group(['prefix'=>'funcionarios'], function(){
+	Route::get('adicionar/exames/{funcionario}',['as'=>'funcionarios.getExames', 'uses' => 'FuncionarioController@getViewAddExame']);
+	Route::post('adicionar/exames/{funcionario}',['as'=>'funcionarios.storeExames', 'uses' => 'FuncionarioController@storeExame']);
+	Route::get('exames/{funcionario}',['as'=>'funcionarios.exames', 'uses' => 'FuncionarioController@getViewExame']);
+});

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Funcionario;
 use App\Empresa;
 use App\Cargo;
+use App\Exame;
 use Carbon\Carbon;
 
 
@@ -32,13 +33,23 @@ class FuncionarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getViewExame($id)
+    public function getViewAddExame($id)
     {
         $funcionario = Funcionario::findOrFail($id);
         $exames = Exame::all();
-        return View('admin.funcionario.exame',compact('funcionario','exames'));
+        return View('admin.funcionario.add-exame',compact('funcionario','exames'));
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getViewExame($id)
+    {
+        $funcionario = Funcionario::findOrFail($id);
+        return View('admin.funcionario.exame',compact('funcionario'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -163,33 +174,31 @@ class FuncionarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeExame(Request $request)
+    public function storeExame(Request $request,$id)
     {
         try {
             $input = $request->all();
-            $funcionario = Funcionario::findOrFail($input['funcionario']);
+            $funcionario = Funcionario::findOrFail($id);
             $exames = Exame::whereIn('id',$input['exames'])->get();
 
             $dados = array();
             foreach ($exames as $exame) {
-                $dados[] = [
-                    $exame->id => [
+                $dados[$exame->id] = [
                         'data' => Carbon::now(),
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
-                    ]
                 ];
             }
-            dd($dados);
+            //dd($dados);
             $funcionario->exames()->attach($dados);
            
-            return response()->json(
-                ['code' => 200, 'msg' => 'Sucesso']
-            );
-        } catch (\Exception $e) {
-            return response()->json(
-                ['code' => 400, 'msg' => $e->getMessage()]
-            );
+            
+            return redirect()->route('funcionarios.index');
+
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error', $e->getMessage())
+            ;
         }
     }
 }

@@ -37,8 +37,16 @@ Lista de Funcionarios
 					<input name="_method" type="hidden" value="DELETE">
 					<button type="submit" class="btn btn-danger pull-left">delete</button>		
 				</form>
+				&nbsp
 				<a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="btn btn-info">
 					<i class="fa fa-pencil-square-o">edit</i>
+				</a>
+				<a href="{{ route('funcionarios.getExames', $funcionario->id) }}" class="btn btn-info">
+					<i class="fa fa-pencil-square-o">Exame</i>
+				</a>
+
+				<a href="{{ route('funcionarios.exames', $funcionario->id) }}" class="btn btn-info">
+					<i class="fa fa-pencil-square-o">Detalhes</i>
 				</a>
 			</td>
 		</tr>

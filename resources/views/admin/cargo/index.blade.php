@@ -17,7 +17,8 @@ Lista de Cargos
 		<tr class="filters">
 			<th>ID</th>
 			<th>Nome</th>
-			<th>descricao</th>
+			<th>Descrição</th>
+			<th>Qntd Funcionarios</th>
 			<th>Ações</th>
 		</tr>
 	</thead>
@@ -28,6 +29,7 @@ Lista de Cargos
 			<td>{{ $cargo->id }}</td>
 			<td>{{ $cargo->nome }}</td>
 			<td>{{ $cargo->descricao }}</td>
+			<td>{{ $cargo->funcionarios->count() }}</td>
 			<td>
 				<form method="POST" action="{{ route('cargos.destroy',$cargo->id) }}">
 					<input name="_method" type="hidden" value="DELETE">

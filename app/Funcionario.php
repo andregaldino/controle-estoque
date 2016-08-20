@@ -25,12 +25,14 @@ class Funcionario extends Model
 
     public function exames()
     {
-        return $this->belongsToMany('App\Exame');
+        return $this->belongsToMany('App\Exame')
+        ->withPivot('data');
     }
 
     public function exame()
     {
         return $this->belongsToMany('App\Exame')
+        ->withPivot('data')
         ->latest();
     }
 }
