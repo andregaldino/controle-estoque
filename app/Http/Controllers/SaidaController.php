@@ -40,7 +40,7 @@ class SaidaController extends Controller
             $funcionario = Funcionario::findOrFail($input['funcionario']);
             $saida = new Saida;
             $saida->qntd = $input['qntd'];
-            $saida->data = Carbon::now();
+            $saida->data = Carbon::createFromFormat('d/m/Y', $input['data']);
             $saida->produto()->associate($produto);
             $saida->funcionario()->associate($funcionario);
 

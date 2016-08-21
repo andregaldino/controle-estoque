@@ -1,4 +1,4 @@
-<div class="modal fade" id="maddtreinamento" role="dialog">
+<div class="modal fade modalcadastro" role="dialog">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,7 +6,7 @@
         <h4 class="modal-title text-center">Cadastro de Treinamentos</h4>
       </div>
 
-      <form  class="form-horizontal" id="faddTreinamento" method="POST">
+      <form  class="form-horizontal formulariocadastro" method="POST">
         <div class="modal-body">
          <div class="form-group">
           <label class="control-label col-md-2" for="email">Nome:</label>

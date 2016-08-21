@@ -6,7 +6,7 @@ Adicionar Entrada ao EPI
 
 
 @section('css')
-
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 @stop
 
 @section('conteudo')
@@ -33,7 +33,7 @@ Adicionar Entrada ao EPI
   <div class="form-group">
     <label class="control-label col-md-2" for="data">Data de Entrada :</label>
     <div class="col-md-6">
-    <input type="date" class="form-control" name="data" id="data">
+    <input type="date" class="form-control data-picker" name="data" id="data">
     </div>          
   </div>
   <a class="btn btn-danger" href="{{route('epis.index')}}">
@@ -44,4 +44,10 @@ Adicionar Entrada ao EPI
   </button>  
 
 </form>
+@stop
+
+@section('script')
+<script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/datepicker.js') }}"></script>
 @stop

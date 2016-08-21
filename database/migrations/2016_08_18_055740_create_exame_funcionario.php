@@ -18,7 +18,7 @@ class CreateExameFuncionario extends Migration
             $table->integer('funcionario_id')->unsigned();
             $table->integer('exame_id')->unsigned();
             $table->timestamps();
-            $table->softDeletes();
+            // sem necessidade -- $table->softDeletes();
 
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');
             $table->foreign('exame_id')->references('id')->on('exames');

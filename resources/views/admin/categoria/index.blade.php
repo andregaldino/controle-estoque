@@ -27,12 +27,11 @@ Lista de Categorias
 		<tr>
 			<td>{{ $categoria->id }}</td>
 			<td>{{ $categoria->nome }}</td>
-			<td>
-				2
-			</td>
+			<td>{{ $categoria->produtos->count() }}</td>
 			<td>
 				<form method="POST" action="{{ route('categorias.destroy',$categoria->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
+					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('categorias.store') }}">
 					<button type="submit" class="btn btn-danger pull-left">delete</button>		
 				</form>
 				<a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-info">
@@ -46,7 +45,7 @@ Lista de Categorias
 	<tfoot>
 		<tr>
 			<td colspan="4" class="text-right">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#categoriacadastro">Cadastrar</button>
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
 			</td>
 		</tr>
 	</tfoot>
@@ -58,37 +57,6 @@ Lista de Categorias
 @stop
 
 @section('script')
-<script type="text/javascript">
-	$(document).ready(function() {
-    // process the form
-    $('#btncadastrar').click(function(event) {
-        // process the form
-        $.ajax({
-        	type        : 'POST', 
-        	url         : "{{ route('categorias.store') }}", 
-        	data: $('#criarCategoria').serialize(),
-        	success: function(data)
-        	{
-        		if (data.code != 200) {
-        			$('#msgs').html("<div class='alert alert-danger'>"+data.msg+"</div>");
-        		}else{
-        			$('#criarCategoria')[0].reset();
-        			$('#categoriacadastro').modal('hide');
-        		}
-           },error: function(msg){
-                    console.log(msg);
-            }
-       });
-
-        event.preventDefault();
-    });
-
-
-    
-
-});
-
-
-</script>
+<script type="text/javascript" src="{{ asset('js/ajax.js') }}"></script>
 @stop
 

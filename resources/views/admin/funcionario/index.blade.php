@@ -35,6 +35,7 @@ Lista de Funcionarios
 			<td>
 				<form method="POST" action="{{ route('funcionarios.destroy',$funcionario->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
+					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('funcionarios.store') }}">
 					<button type="submit" class="btn btn-danger pull-left">delete</button>		
 				</form>
 				&nbsp
@@ -56,7 +57,7 @@ Lista de Funcionarios
 	<tfoot>
 		<tr>
 			<td colspan="6" class="text-right">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#maddFuncionario">Cadastrar</button>
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
 			</td>
 		</tr>
 	</tfoot>
@@ -68,37 +69,6 @@ Lista de Funcionarios
 @stop
 
 @section('script')
-<script type="text/javascript">
-	$(document).ready(function() {
-    // process the form
-    $('#btncadastrar').click(function(event) {
-        // process the form
-        $.ajax({
-        	type        : 'POST', 
-        	url         : "{{ route('funcionarios.store') }}", 
-        	data: $('#faddFuncionario').serialize(),
-        	success: function(data)
-        	{
-        		if (data.code != 200) {
-        			$('#msgs').html("<div class='alert alert-danger'>"+data.msg+"</div>");
-        		}else{
-        			$('#faddFuncionario')[0].reset();
-        			$('#maddFuncionario').modal('hide');
-        		}
-           },error: function(msg){
-                    console.log(msg);
-            }
-       });
-
-        event.preventDefault();
-    });
-
-
-    
-
-});
-
-
-</script>
+<script type="text/javascript" src="{{ asset('js/ajax.js') }}"></script>
 @stop
 

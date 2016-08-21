@@ -31,6 +31,6 @@ class CreateFuncionario extends Migration
      */
     public function down()
     {
-        Schema::drop();
+        Schema::drop('funcionarios');
     }
 }

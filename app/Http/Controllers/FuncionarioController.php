@@ -184,9 +184,9 @@ class FuncionarioController extends Controller
             $dados = array();
             foreach ($exames as $exame) {
                 $dados[$exame->id] = [
-                        'data' => Carbon::now(),
-                        'created_at' => Carbon::now(),
-                        'updated_at' => Carbon::now(),
+                        'data' => Carbon::createFromFormat('d/m/Y', $input['data']),
+                        'created_at' => Carbon::createFromFormat('d/m/Y', $input['data']),
+                        'updated_at' => Carbon::createFromFormat('d/m/Y', $input['data']),
                 ];
             }
             //dd($dados);

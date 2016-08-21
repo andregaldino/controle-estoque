@@ -35,6 +35,7 @@ Lista de Empresas
 			<td>
 				<form method="POST" action="{{ route('empresas.destroy',$empresa->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
+					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('empresas.store') }}">
 					<button type="submit" class="btn btn-danger pull-left">delete</button>		
 				</form>
 				<a href="{{ route('empresas.edit', $empresa->id) }}" class="btn btn-info">
@@ -47,8 +48,8 @@ Lista de Empresas
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="5" class="text-right">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#maddEmpresa">Cadastrar</button>
+			<td colspan="6" class="text-right">
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
 			</td>
 		</tr>
 	</tfoot>
@@ -60,37 +61,6 @@ Lista de Empresas
 @stop
 
 @section('script')
-<script type="text/javascript">
-	$(document).ready(function() {
-    // process the form
-    $('#btncadastrar').click(function(event) {
-        // process the form
-        $.ajax({
-        	type        : 'POST', 
-        	url         : "{{ route('empresas.store') }}", 
-        	data: $('#faddEmpresa').serialize(),
-        	success: function(data)
-        	{
-        		if (data.code != 200) {
-        			$('#msgs').html("<div class='alert alert-danger'>"+data.msg+"</div>");
-        		}else{
-        			$('#faddEmpresa')[0].reset();
-        			$('#maddEmpresa').modal('hide');
-        		}
-           },error: function(msg){
-                    console.log(msg);
-            }
-       });
-
-        event.preventDefault();
-    });
-
-
-    
-
-});
-
-
-</script>
+<script type="text/javascript" src="{{ asset('js/ajax.js') }}"></script>
 @stop
 

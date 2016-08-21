@@ -37,6 +37,7 @@ Lista de EPI
 			<td>
 				<form method="POST" action="{{ route('epis.destroy',$produto->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
+					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('epis.store') }}">
 					<button type="submit" class="btn btn-danger pull-left">delete</button>		
 				</form>
 				&nbsp
@@ -57,7 +58,7 @@ Lista de EPI
 	<tfoot>
 		<tr>
 			<td colspan="8" class="text-right">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#maddProduto">Cadastrar</button>
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
 			</td>
 		</tr>
 	</tfoot>
@@ -69,37 +70,6 @@ Lista de EPI
 @stop
 
 @section('script')
-<script type="text/javascript">
-	$(document).ready(function() {
-    // process the form
-    $('#btncadastrar').click(function(event) {
-        // process the form
-        $.ajax({
-        	type        : 'POST', 
-        	url         : "{{ route('epis.store') }}", 
-        	data: $('#faddProduto').serialize(),
-        	success: function(data)
-        	{
-        		if (data.code != 200) {
-        			$('#msgs').html("<div class='alert alert-danger'>"+data.msg+"</div>");
-        		}else{
-        			$('#faddProduto')[0].reset();
-        			$('#maddProduto').modal('hide');
-        		}
-           },error: function(msg){
-                    console.log(msg);
-            }
-       });
-
-        event.preventDefault();
-    });
-
-
-    
-
-});
-
-
-</script>
+<script type="text/javascript" src="{{ asset('js/ajax.js') }}"></script>
 @stop
 

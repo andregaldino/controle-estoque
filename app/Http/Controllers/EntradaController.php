@@ -37,7 +37,7 @@ class EntradaController extends Controller
             $produto = Produto::findOrFail($id);
             $entrada = new Entrada;
             $entrada->qntd = $input['qntd'];
-            $entrada->data = Carbon::now();
+            $entrada->data = Carbon::createFromFormat('d/m/Y', $input['data']);
             $entrada->produto()->associate($produto);
 
             $entrada->save();

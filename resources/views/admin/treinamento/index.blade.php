@@ -33,6 +33,7 @@ Lista de Treinamentos
 			<td>
 				<form method="POST" action="{{ route('treinamentos.destroy',$treinamento->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
+					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('treinamentos.store') }}">
 					<button type="submit" class="btn btn-danger pull-left">delete</button>		
 				</form>
 				<a href="{{ route('treinamentos.edit', $treinamento->id) }}" class="btn btn-info">
@@ -49,7 +50,7 @@ Lista de Treinamentos
 	<tfoot>
 		<tr>
 			<td colspan="4" class="text-right">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#maddtreinamento">Cadastrar</button>
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
 			</td>
 		</tr>
 	</tfoot>
@@ -61,37 +62,6 @@ Lista de Treinamentos
 @stop
 
 @section('script')
-<script type="text/javascript">
-	$(document).ready(function() {
-    // process the form
-    $('#btncadastrar').click(function(event) {
-        // process the form
-        $.ajax({
-        	type        : 'POST', 
-        	url         : "{{ route('treinamentos.store') }}", 
-        	data: $('#faddTreinamento').serialize(),
-        	success: function(data)
-        	{
-        		if (data.code != 200) {
-        			$('#msgs').html("<div class='alert alert-danger'>"+data.msg+"</div>");
-        		}else{
-        			$('#faddTreinamento')[0].reset();
-        			$('#maddtreinamento').modal('hide');
-        		}
-           },error: function(msg){
-                    console.log(msg);
-            }
-       });
-
-        event.preventDefault();
-    });
-
-
-    
-
-});
-
-
-</script>
+<script type="text/javascript" src="{{ asset('js/ajax.js') }}"></script>
 @stop
 
