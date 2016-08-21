@@ -12,6 +12,15 @@ Lista de Treinamentos
 
 @section('conteudo')
 <div id="msg"></div>
+<div class="panel panel-primary ">
+      <div class="panel-heading">
+        <h4 class="panel-title"> 
+          Lista de Treinamentos
+        </h4>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
+      </div>
+      <br />
+      <div class="panel-body">
 <table class="table table-striped " id="table">
 	<thead>
 		<tr class="filters">
@@ -47,14 +56,9 @@ Lista de Treinamentos
 		@endforeach
 		@endif
 	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="4" class="text-right">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
-			</td>
-		</tr>
-	</tfoot>
 </table>
+</div>
+</div>
 
 @include('admin/treinamento/criar')
 

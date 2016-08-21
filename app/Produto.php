@@ -17,8 +17,7 @@ class Produto extends Model
 
     public function categoria()
     {
-    	return $this->belongsTo('App\Categoria')
-        ->withTrashed();
+    	return $this->belongsTo('App\Categoria');
     }
 
     public function entradas()

@@ -51,4 +51,16 @@ class EntradaController extends Controller
         }
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $entradas = Entrada::all();
+        return View('admin.entrada.index',compact('entradas'));
+    }
+
+
 }

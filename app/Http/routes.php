@@ -41,4 +41,5 @@ Route::group(['prefix'=>'epis'], function(){
 
 	//Route::get('exames/{funcionario}',['as'=>'funcionarios.exames', 'uses' => 'FuncionarioController@getViewExame']);
 });
-
+Route::resource('entradas','EntradaController');
+Route::resource('saidas','SaidaController');

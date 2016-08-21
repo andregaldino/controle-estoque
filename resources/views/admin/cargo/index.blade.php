@@ -12,6 +12,15 @@ Lista de Cargos
 
 @section('conteudo')
 <div id="msg"></div>
+<div class="panel panel-primary ">
+      <div class="panel-heading">
+        <h4 class="panel-title"> 
+          Lista de Cargos
+        </h4>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
+      </div>
+      <br />
+      <div class="panel-body">
 <table class="table table-striped " id="table">
 	<thead>
 		<tr class="filters">
@@ -44,14 +53,9 @@ Lista de Cargos
 		@endforeach
 		@endif
 	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="5" class="text-right">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
-			</td>
-		</tr>
-	</tfoot>
 </table>
+</div>
+</div>
 
 @include('admin/cargo/criar')
 

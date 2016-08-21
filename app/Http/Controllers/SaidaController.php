@@ -54,4 +54,16 @@ class SaidaController extends Controller
             ;
         }
     }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $saidas = Saida::all();
+        return View('admin.saida.index',compact('saidas'));
+    }
+
 }

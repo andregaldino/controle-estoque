@@ -1,7 +1,7 @@
 @extends('admin/layouts/default')
 
 @section('titulo')
-Lista de Categorias
+Histórico de Saidas
 @stop
 
 
@@ -15,7 +15,7 @@ Lista de Categorias
 <div class="panel panel-primary ">
       <div class="panel-heading">
         <h4 class="panel-title"> 
-          Lista de Categorias
+          Histórico de Saida
         </h4>
           <button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
       </div>
@@ -25,25 +25,25 @@ Lista de Categorias
 	<thead>
 		<tr class="filters">
 			<th>ID</th>
-			<th>Nome</th>
-			<th>No. de EPIs</th>
+			<th>EPI</th>
+			<th>Data de saida</th>
+			<th>Qntd</th>
+			<th>Funcionario</th>
 			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
-		@if(isset($categorias) && count($categorias) > 0 )
-		@foreach($categorias as $categoria)
+		@if(isset($saidas) && count($saidas) > 0 )
+		@foreach($saidas as $saida)
 		<tr>
-			<td>{{ $categoria->id }}</td>
-			<td>{{ $categoria->nome }}</td>
-			<td>{{ $categoria->produtos->count() }}</td>
+			<td>{{ $saida->id }}</td>
+			<td>{{ $saida->produto->nome }}</td>
+			<td>{{ $saida->data }}</td>
+			<td>{{ $saida->qntd }}</td>
+			<td>{{ $saida->funcionario->nome }}</td>
 			<td>
-				<form method="POST" action="{{ route('categorias.destroy',$categoria->id) }}">
-					<input name="_method" type="hidden" value="DELETE">
-					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('categorias.store') }}">
-					<button type="submit" class="btn btn-danger pull-left">delete</button>		
-				</form>
-				<a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-info">
+				<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('saidas.store') }}">
+				<a href="{{ route('saidas.edit', $saida->id) }}" class="btn btn-info">
 					<i class="fa fa-pencil-square-o">edit</i>
 				</a>
 			</td>
@@ -54,8 +54,6 @@ Lista de Categorias
 </table>
 </div>
 </div>
-
-@include('admin/categoria/criar')
 
 
 @stop
