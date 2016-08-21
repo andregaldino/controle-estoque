@@ -20,4 +20,17 @@ class Produto extends Model
     {
     	return $this->hasMany('App\Entrada');
     }
+
+    public function saidas()
+    {
+        return $this->hasMany('App\Saida');
+    }
+
+    public function getQntdAttribute()
+    {
+        $numentradas = $this->entradas->sum('qntd');
+        $numsaidas = $this->saidas->sum('qntd');
+
+        return $numentradas-$numsaidas;
+    }
 }

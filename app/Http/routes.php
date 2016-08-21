@@ -33,8 +33,12 @@ Route::group(['prefix'=>'funcionarios'], function(){
 Route::resource('epis','ProdutoController');
 Route::group(['prefix'=>'epis'], function(){
 	Route::get('adicionar/entrada/{epi}',['as'=>'epis.storeEntrada', 'uses' => 'EntradaController@getViewEntrada']);
+	Route::post('adicionar/entrada/{epi}',['as'=>'epis.storeEntrada', 'uses' => 'EntradaController@store']);
 
-	Route::post('adicionar/epis/{epi}',['as'=>'epis.storeEntrada', 'uses' => 'EntradaController@store']);
+	Route::get('adicionar/saida/{epi}',['as'=>'epis.storeSaida', 'uses' => 'SaidaController@getViewSaida']);
+	Route::post('adicionar/saida/{epi}',['as'=>'epis.storeSaida', 'uses' => 'SaidaController@store']);
+
+
 	//Route::get('exames/{funcionario}',['as'=>'funcionarios.exames', 'uses' => 'FuncionarioController@getViewExame']);
 });
 

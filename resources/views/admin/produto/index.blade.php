@@ -33,7 +33,7 @@ Lista de EPI
 			<td>{{ $produto->medida }}</td>
 			<td>{{ $produto->ca }}</td>
 			<td>{{ $produto->categoria->nome or "Nenhuma categoria alocada" }}</td>
-			<td>alterar</td>
+			<td>{{ $produto->qntd }}</td>
 			<td>
 				<form method="POST" action="{{ route('epis.destroy',$produto->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
@@ -46,7 +46,7 @@ Lista de EPI
 				<a href="{{ route('epis.storeEntrada', $produto->id) }}" class="btn btn-info">
 					<i class="fa fa-pencil-square-o">Entrada</i>
 				</a>
-				<a href="{{ route('epis.edit', $produto->id) }}" class="btn btn-info">
+				<a href="{{ route('epis.storeSaida', $produto->id) }}" class="btn btn-info">
 					<i class="fa fa-pencil-square-o">Saida</i>
 				</a>
 			</td>

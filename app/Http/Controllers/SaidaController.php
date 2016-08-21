@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Produto;
+use App\Saida;
+use App\Funcionario;
+use Carbon\Carbon;
 
 class SaidaController extends Controller
 {
@@ -14,52 +18,11 @@ class SaidaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getViewSaida($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $produto = Produto::findOrFail($id);
+        $funcionarios = Funcionario::all();
+        return View('admin.produto.saida',compact('produto','funcionarios'));
     }
 
     /**
@@ -69,19 +32,26 @@ class SaidaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function store(Request $request, $id)
     {
-        //
-    }
+        try {
+            $input = $request->all();
+            $produto = Produto::findOrFail($id);
+            $funcionario = Funcionario::findOrFail($input['funcionario']);
+            $saida = new Saida;
+            $saida->qntd = $input['qntd'];
+            $saida->data = Carbon::now();
+            $saida->produto()->associate($produto);
+            $saida->funcionario()->associate($funcionario);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            $saida->save();
+
+            return redirect()->route('epis.index');
+
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error', $e->getMessage())
+            ;
+        }
     }
 }
