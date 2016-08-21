@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Treinamento;
-
+use App\Funcionario;
+use Carbon\Carbon;
 class TreinamentoController extends Controller
 {
     /**
@@ -26,9 +27,11 @@ class TreinamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getViewAddFuncionarios($id)
     {
-        //
+        $treinamento = Treinamento::findOrFail($id);
+        $funcionarios = Funcionario::all();
+        return View('admin.treinamento.add-funcionarios',compact('treinamento','funcionarios'));
     }
 
     /**
@@ -111,6 +114,39 @@ class TreinamentoController extends Controller
         } catch (Exception $e) {
             return redirect()->back()
             ->with('error',$e->getMessage());
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeFuncionarios(Request $request,$id)
+    {
+        try {
+            $input = $request->all();
+            $treinamento = Treinamento::findOrFail($id);
+            $funcionarios = Funcionario::whereIn('id',$input['funcionarios'])->get();
+
+            $dados = array();
+            foreach ($funcionarios as $funcionario) {
+                $dados[$funcionario->id] = [
+                        'data' => Carbon::now(),
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                ];
+            }
+            $treinamento->funcionarios()->attach($dados);
+           
+            
+            return redirect()->route('treinamentos.index');
+
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error', $e->getMessage())
+            ;
         }
     }
 }

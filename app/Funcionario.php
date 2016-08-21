@@ -29,10 +29,9 @@ class Funcionario extends Model
         ->withPivot('data');
     }
 
-    public function exame()
+    public function treinamentos()
     {
-        return $this->belongsToMany('App\Exame')
-        ->withPivot('data')
-        ->latest();
+        return $this->belongsToMany('App\Treinamento')
+        ->withPivot('data');
     }
 }

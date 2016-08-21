@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Produto;
+use App\Entrada;
+use Carbon\Carbon;
 
 class EntradaController extends Controller
 {
@@ -14,52 +17,10 @@ class EntradaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getViewEntrada($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $produto = Produto::findOrFail($id);
+        return View('admin.produto.entrada',compact('produto'));
     }
 
     /**
@@ -69,19 +30,25 @@ class EntradaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function store(Request $request, $id)
     {
-        //
+        try {
+            $input = $request->all();
+            $produto = Produto::findOrFail($id);
+            $entrada = new Entrada;
+            $entrada->qntd = $input['qntd'];
+            $entrada->data = Carbon::now();
+            $entrada->produto()->associate($produto);
+
+            $entrada->save();
+
+            return redirect()->route('epis.index');
+
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error', $e->getMessage())
+            ;
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

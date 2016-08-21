@@ -17,7 +17,7 @@
         <div class="form-group">
           <label class="control-label col-md-2" for="email">Descrição:</label>
           <div class="col-md-10">
-          <textarea name="descricao" id="descricao"></textarea>
+          <textarea name="descricao" class="form-control" id="descricao"></textarea>
           </div>
           
         </div>
