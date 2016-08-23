@@ -29,6 +29,7 @@ Route::group(['prefix'=>'funcionarios'], function(){
 	Route::get('adicionar/exames/{funcionario}',['as'=>'funcionarios.getExames', 'uses' => 'FuncionarioController@getViewAddExame']);
 	Route::post('adicionar/exames/{funcionario}',['as'=>'funcionarios.storeExames', 'uses' => 'FuncionarioController@storeExame']);
 	Route::get('exames/{funcionario}',['as'=>'funcionarios.exames', 'uses' => 'FuncionarioController@getViewExame']);
+	Route::get('demitidos',['as'=>'funcionarios.demitidos', 'uses' => 'FuncionarioController@getViewDemitidos']);
 });
 Route::resource('epis','ProdutoController');
 Route::group(['prefix'=>'epis'], function(){

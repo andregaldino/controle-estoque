@@ -33,6 +33,20 @@ class FuncionarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getViewDemitidos()
+    {
+        $funcionarios = Funcionario::onyTrashed();
+        $empresas = Empresa::all();
+        $cargos = Cargo::all();
+        return View('admin.funcionario.index',compact('funcionarios','empresas','cargos'));
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getViewAddExame($id)
     {
         $funcionario = Funcionario::findOrFail($id);

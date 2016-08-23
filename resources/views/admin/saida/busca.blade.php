@@ -36,12 +36,6 @@ Relatorio de Entrada e Saida por periodo
 								<option value="1">Resumido</option>
 							</select>
 						</div>
-
-
-
-
-						
-
 						<div class="form-group">
 							<button name="btnPesq" class="btn btn-primary" type="submit">
 								<i class="glyphicon glyphicon-search"> Pesquisar </i>
@@ -53,39 +47,40 @@ Relatorio de Entrada e Saida por periodo
 		</div>
 	</div>
 </div>
-@if(count($saidas) > 0)
+@if(count($saidas) > 0 && count($produtos) > 0)
 <div class="panel panel-primary ">
 	<div class="panel-heading">
 		<h4 class="panel-title"> 
+			Controle de Estoque por Periodo
 		</h4>
 	</div>
 	<br />
 	<div class="panel-body">
 		<table class="table table-striped " id="table">
+			
 			<thead>
 				<tr class="filters">
-					<th>ID</th>
-					<th>EPI</th>
-					<th>Data de saida</th>
-					<th>Qntd</th>
 					<th>Funcionario</th>
-					<th>Ações</th>
+					@foreach($produtos as $produto)
+						<th>{{ $produto->nome }}</th>	
+					@endforeach
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($saidas as $saida)
 				<tr>
-					<td>{{ $saida->id }}</td>
-					<td>{{ $saida->produto->nome }}</td>
-					<td>{{ $saida->data }}</td>
-					<td>{{ $saida->qntd }}</td>
-					<td>{{ $saida->funcionario->nome }}</td>
-					<td>
-						<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('saidas.store') }}">
-						
-					</td>
+					<td>{{$saida['funcionario']}}</td>
+					@foreach($produtos as $produto)
+						@foreach($saida['saidas'] as $valor)
+							@if($valor->id == $produto->id)
+								<td>{{ $valor->qntd_periodo }}</td>
+							@else
+								<td>0</td>
+							@endif
+						@endforeach
+					@endforeach
 				</tr>
-				@endforeach
+			@endforeach	
 			</tbody>
 		</table>
 	</div>

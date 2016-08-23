@@ -22,7 +22,7 @@ class SaidaController extends Controller
     public function getViewSaida($id)
     {
         $produto = Produto::findOrFail($id);
-        $funcionarios = Funcionario::all();
+        $funcionarios = Funcionario::orderBy('nome','asc')->get();
         return View('admin.produto.saida',compact('produto','funcionarios'));
     }
 
@@ -89,13 +89,25 @@ class SaidaController extends Controller
     {
         try {
             $input = $request->all();
-            $saidas  = Saida::whereBetween('data',[
-                Carbon::createFromFormat('d/m/Y',$input['datainicio']),
-                Carbon::createFromFormat('d/m/Y',$input['datafinal'])
-                ])->get();
-            return View('admin.saida.busca',compact('saidas'));
+            $users = Funcionario::orderBy('nome','acs')->withTrashed()->get();
+            $produtos = Produto::orderBy('nome','acs')->get();
+
+            $saidas = array();
+            foreach ($users as $value) {
+                $saidas[] =[
+                    'funcionario' => $value->nome,
+                    'funcionario_id' => $value->id,
+                    'saidas' => $value->saidas()->HistoricoData([
+                                    'datainicio'=>Carbon::createFromFormat('d/m/Y',$input['datainicio']),
+                                    'datafinal'=>Carbon::createFromFormat('d/m/Y',$input['datafinal'])
+                                    ]
+                                )->get()
+                ];
+            }
+            return View('admin.saida.busca',compact('saidas','produtos'));
         } catch (Exception $e) {
             $saidas = [];
+            dd($e);
             return View('admin.saida.busca',compact('saidas'));
         }
     }

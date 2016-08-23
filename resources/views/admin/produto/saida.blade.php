@@ -22,26 +22,30 @@ Adicionar Saida de EPI
     </p>
   </div>
 
-  <div class="well">
-    <div class="radio">
+  <div class="form-group">
+    <label class="control-label col-md-2" for="funcionario">Funcionario :</label>
+    <div class="col-md-6">
+      <select name="funcionario" class="form-control">
       @if(count($funcionarios) > 0)
-      @foreach($funcionarios as $funcionario)
-      <label class="radio-inline col-sm-3">
-        <input type="radio" name="funcionario" value="{{$funcionario->id}}">{{ $funcionario->nome }} - {{ $funcionario->cpf }}
-      </label>
-      @endforeach
+        @foreach($funcionarios as $funcionario)
+          <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
+        @endforeach
+      @else
+        <option value="0">Selecione um funcionario</option>
       @endif
-    </div>
-
-    <br>
+      </select>
+    </div>          
   </div>
-  
+
   <div class="form-group">
     <label class="control-label col-md-2" for="qntd">Quantidade :</label>
     <div class="col-md-6">
     <input type="number" class="form-control" name="qntd" id="qntd">
     </div>          
   </div>
+
+
+
 
   <div class="form-group">
     <label class="control-label col-md-2" for="data">Data de Entrada :</label>

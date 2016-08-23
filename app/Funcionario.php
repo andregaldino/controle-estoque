@@ -38,4 +38,10 @@ class Funcionario extends Model
         ->withTrashed()
         ->withPivot('data');
     }
+
+    public function saidas()
+    {
+        return $this->hasMany('App\Saida');
+    }
+
 }
