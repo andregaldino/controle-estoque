@@ -43,9 +43,6 @@ Histórico de Saidas
 			<td>{{ $saida->funcionario->nome }}</td>
 			<td>
 				<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('saidas.store') }}">
-				<a href="{{ route('saidas.edit', $saida->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">edit</i>
-				</a>
 			</td>
 		</tr>
 		@endforeach

@@ -10,6 +10,7 @@ use App\Produto;
 use App\Saida;
 use App\Funcionario;
 use Carbon\Carbon;
+use Exception;
 
 class SaidaController extends Controller
 {
@@ -37,9 +38,15 @@ class SaidaController extends Controller
         try {
             $input = $request->all();
             $produto = Produto::findOrFail($id);
+            
+            if (($produto->qntd - $input['qntd']) < 0) {
+                throw new Exception("Quantidade de Saida maior que o Estoque do Produto"); 
+            }
+
             $funcionario = Funcionario::findOrFail($input['funcionario']);
             $saida = new Saida;
             $saida->qntd = $input['qntd'];
+
             $saida->data = Carbon::createFromFormat('d/m/Y', $input['data']);
             $saida->produto()->associate($produto);
             $saida->funcionario()->associate($funcionario);
@@ -65,5 +72,34 @@ class SaidaController extends Controller
         $saidas = Saida::all();
         return View('admin.saida.index',compact('saidas'));
     }
+
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getViewSearch()
+    {
+        $saidas = [];
+        return View('admin.saida.busca',compact('saidas'));
+    }
+
+    public function search(Request $request)
+    {
+        try {
+            $input = $request->all();
+            $saidas  = Saida::whereBetween('data',[
+                Carbon::createFromFormat('d/m/Y',$input['datainicio']),
+                Carbon::createFromFormat('d/m/Y',$input['datafinal'])
+                ])->get();
+            return View('admin.saida.busca',compact('saidas'));
+        } catch (Exception $e) {
+            $saidas = [];
+            return View('admin.saida.busca',compact('saidas'));
+        }
+    }
+
+
 
 }

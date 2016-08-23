@@ -41,5 +41,11 @@ Route::group(['prefix'=>'epis'], function(){
 
 	//Route::get('exames/{funcionario}',['as'=>'funcionarios.exames', 'uses' => 'FuncionarioController@getViewExame']);
 });
+Route::resource('saidas','SaidaController', ['only' => ['index','store']]);
+Route::group(['prefix'=>'saidas'], function(){
+	Route::get('relatorios',['as'=>'saidas.search', 'uses' => 'SaidaController@getViewSearch']);
+	Route::post('relatorios',['as'=>'saidas.search', 'uses' => 'SaidaController@search']);
+});
+
+
 Route::resource('entradas','EntradaController');
-Route::resource('saidas','SaidaController');

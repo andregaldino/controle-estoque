@@ -27,9 +27,8 @@
                 <li id="center-xs" ><a href="{{ route('epis.index') }}" class="hvr-sweep-to-right tile3">EPI</a></li>
                 <li id="center-xs" ><a href="{{ route('entradas.index') }}" class="hvr-sweep-to-right tile3">Entrada</a></li>
                 <li id="center-xs" ><a href="{{ route('saidas.index') }}" class="hvr-sweep-to-right tile3">Saidas</a></li>
-                <li class="visible-xs"><a href="#" class="hvr-sweep-to-right instagram"><i class="fa fa-instagram fa-lg"></i></a></li>
-                <li class="visible-xs"><a href="#" class="hvr-sweep-to-right twitter"><i class="fa fa-twitter fa-lg"></i></a></li>
-                <li class="visible-xs"><a href="#" class="hvr-sweep-to-right facebook"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li id="center-xs" ><a href="{{ route('saidas.search') }}" class="hvr-sweep-to-right tile3">Relatorios</a></li>
+                
             </ul>
             <ul class="nav navbar-nav navbar-right icon-list hidden-xs">
                 <li><a href="#" class="hvr-sweep-to-right instagram"><i class="fa fa-instagram fa-lg"></i></a></li>
