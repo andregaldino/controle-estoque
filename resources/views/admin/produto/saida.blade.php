@@ -12,13 +12,15 @@ Adicionar Saida de EPI
 @section('conteudo')
 <form  class="form-horizontal" role="form" method="POST" action="{{ route('epis.storeSaida',$produto->id) }}">
 
-
+  <input type="hidden" name="id" id="id" value="{{ $produto->id }}">
+  <input type="hidden" name="max" id="max" value="{{ $produto->qntd }}">
   <div class="text-center">
     <h2>{{ $produto->nome }}</h2>
     <p>
       <strong>Tamhno :</strong> {{ $produto->medida }}<br>
       <strong>CA :</strong> {{ $produto->ca }}<br>
       <strong>Categoria :</strong> {{ $produto->categoria->nome }}<br>
+      <strong>Estoque : <span style="color:red">{{ $produto->qntd }}</span> </strong><br>
     </p>
   </div>
 
@@ -40,7 +42,7 @@ Adicionar Saida de EPI
   <div class="form-group">
     <label class="control-label col-md-2" for="qntd">Quantidade :</label>
     <div class="col-md-6">
-    <input type="number" class="form-control" name="qntd" id="qntd">
+    <input type="number" class="form-control" name="qntd" min="1" id="qntd">
     </div>          
   </div>
 

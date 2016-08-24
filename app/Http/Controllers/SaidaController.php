@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaidaRequest;
+use App\Http\Requests\SaidaBuscaRequest;
 use App\Produto;
 use App\Saida;
 use App\Funcionario;
@@ -33,7 +35,7 @@ class SaidaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(SaidaRequest $request, $id)
     {
         try {
             $input = $request->all();
@@ -85,7 +87,7 @@ class SaidaController extends Controller
         return View('admin.saida.busca',compact('saidas'));
     }
 
-    public function search(Request $request)
+    public function search(SaidaBuscaRequest $request)
     {
         try {
             $input = $request->all();
