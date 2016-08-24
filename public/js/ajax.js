@@ -1,7 +1,10 @@
 	$(document).ready(function() {
     // process the form
     $('#btncadastrar').click(function(event) {
-        // process the form
+        
+        event.preventDefault();
+            $('[data-toggle="tooltip"]').tooltip('destroy');
+        //
         $.ajax({
         	type        : 'POST', 
         	url         : $(".urlcadastro").val(), 
@@ -13,13 +16,25 @@
         		}else{
         			$('.formulariocadastro')[0].reset();
         			$('.modalcadastro').modal('hide');
+                    location.reload();
         		}
            },error: function(msg){
-                    console.log(msg);
+                $.each(msg.responseJSON, function(key,value) {
+                    
+                    $("#"+key).attr('data-toggle','tooltip');
+                    $("#"+key).css("border-color","red");
+                    setTimeout(function () {
+                        $("#"+key).tooltip({
+                        title: value[0].message,
+                        trigger : "manual",
+                        placement: "top"
+                    }).tooltip("show");
+                    }, 500)
+                    
+                }); 
+                    
             }
        });
-
-        event.preventDefault();
     });
 
 

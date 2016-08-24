@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\CategoriaRequest;
 use App\Http\Controllers\Controller;
 use App\Categoria;
 
@@ -37,9 +38,21 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriaRequest $request)
     {
         try {
+            $input = $request->all();
+            /*
+            $validator = Validator::make($input, $request->rules(), $request->messages());
+            // verificando a ocorrencia de falhas
+            if ($validator->fails()) {
+                return response()->json([
+                    'message' => 'validation_faild',
+                    'errors' => $valid->errors()
+                ]);
+            } 
+            */
+
             $input = $request->all();
             $categoria = new Categoria;
             $categoria->nome = $input['nome'];
