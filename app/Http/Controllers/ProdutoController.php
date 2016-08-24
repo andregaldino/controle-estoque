@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EPIRequest;
 use App\Produto;
 use App\Categoria;
 use App\Lembrete;
@@ -34,14 +35,16 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EPIRequest $request)
     {
         try {
             $input = $request->all();
             $produto = new Produto;
             $produto->nome = $input['nome'];
             $produto->medida = $input['medida'];
-            $produto->ca = $input['ca'];
+            if ($request->has('ca')) {
+                $produto->ca = $input['ca'];
+            }
 
             $categoria = Categoria::findOrFail($input['categoria']);
 
@@ -49,11 +52,13 @@ class ProdutoController extends Controller
 
             $produto->save();
 
-            $lembrete = new Lembrete;
-            $lembrete->min = $input['min'];
+            if ($request->has('min')){
+                $lembrete = new Lembrete;
+                $lembrete->min = $input['min'];
 
-            $lembrete->produto()->associate($produto);
-            $lembrete->save();
+                $lembrete->produto()->associate($produto);
+                $lembrete->save();
+            }
 
             return response()->json(
                 ['code' => 200, 'msg' => 'Sucesso']
@@ -89,14 +94,16 @@ class ProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EPIRequest $request, $id)
     {
         try {
             $input = $request->all();
             $produto = Produto::findOrFail($id);
             $produto->nome = $input['nome'];
             $produto->medida = $input['medida'];
-            $produto->ca = $input['ca'];
+            if ($request->has('ca')) {
+                $produto->ca = $input['ca'];
+            }
 
             $categoria = Categoria::findOrFail($input['categoria']);
 

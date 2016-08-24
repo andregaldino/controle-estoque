@@ -16,7 +16,7 @@ Editar Equipamento de Proteção Individual
   <div class="form-group">
     <label for="slug" class="col-sm-2 control-label">ID</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" value="{{$produto->id}}"  readonly  />
+      <input type="text" class="form-control" name="id" value="{{$produto->id}}"  readonly  />
 
     </div>
   </div>

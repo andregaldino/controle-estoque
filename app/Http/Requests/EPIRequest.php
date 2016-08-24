@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class FuncionarioRequest extends Request
+class EPIRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,19 +33,20 @@ class FuncionarioRequest extends Request
             {
                 return [
                     'nome'       => 'required|min:3',
-                    'cpf'       => 'required|min:3|unique:funcionarios,cpf',
-                    'empresa'       => 'required|exists:empresas,id',
-                    'cargo'       => 'required|exists:cargos,id',
+                    'medida'       => 'required',
+                    'categoria'       => 'required|exists:categorias,id',
+                    'min'       => 'numeric',
+                    'ca'       => 'numeric',
                 ];
                 break;
             }
             case 'PUT':
                 return [
-                    'id'       => 'required|numeric|exists:funcionarios',
+                    'id'       => 'required|numeric|exists:produtos',
                     'nome'       => 'required|min:3',
-                    'cpf'       => 'required|min:3|unique:funcionarios,cpf',
-                    'empresa'       => 'required|exists:empresas,id',
-                    'cargo'       => 'required|exists:cargos,id',
+                    'medida'       => 'required',
+                    'categoria'       => 'required|exists:categorias,id',
+                    'ca'       => 'numeric',
                 ];
                 break;
             case 'PATCH':
@@ -65,15 +66,13 @@ class FuncionarioRequest extends Request
             'id.numeric' => 'O campo id deve ser numerico',
             'id.exists' => 'O campo id informado não existe',
 
-            'cpf.required' => 'O campo cpf é obrigatorio.',
-            'cpf.min' => 'O campo cpf deve conter mais de 3 caracteres.',
-            'cpf.unique' => 'O cpf já existe no sistema',
+            'medida.required' => 'O campo tamanho é obrigatorio.',
 
-            'empresa.required' => 'O campo empresa é obrigatorio.',
-            'empresa.exists' => 'O campo empresa informado não existe',
+            'categoria.required' => 'O campo categoria é obrigatorio.',
+            'categoria.exists' => 'O campo categoria informado não existe',          
 
-            'cargo.required' => 'O campo cargo é obrigatorio.',
-            'cargo.exists' => 'O campo cargo informado não existe',
+            'min.numeric' => 'O campo minimo para lembrete deve ser numerico',
+            'ca.numeric' => 'O campo CA deve ser numerico',
         ];
     }
 }
