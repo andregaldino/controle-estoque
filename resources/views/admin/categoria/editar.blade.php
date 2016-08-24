@@ -16,14 +16,14 @@ Editar Categoria
   <div class="form-group">
     <label for="slug" class="col-sm-2 control-label">ID</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" value="{{$categoria->id}}"  readonly  />
+      <input type="text" class="form-control" name="id" id="id" value="{{$categoria->id}}"  readonly  />
 
     </div>
   </div>
   <div class="form-group">
     <label for="slug" class="col-sm-2 control-label">Nome</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" name="nome" value="{{$categoria->nome}}"  />
+      <input type="text" class="form-control" name="nome" id="nome" value="{{$categoria->nome}}"  />
 
     </div>
   </div>

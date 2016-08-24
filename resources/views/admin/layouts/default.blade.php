@@ -14,6 +14,7 @@
 	@include('admin/layouts/menu')
 
 <div class="container">
+	@include('admin/layouts/notificacoes')
 	@yield('conteudo')
 </div>
 

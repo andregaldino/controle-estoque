@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\CategoriaRequest;
 use App\Http\Controllers\Controller;
 use App\Categoria;
+use Validator;
 
 class CategoriaController extends Controller
 {
@@ -90,10 +91,20 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoriaRequest $request, $id)
     {
         try {
             $input = $request->all();
+            /*
+            $validator = Validator::make($input, $request->rules(), $request->messages());
+            // verificando a ocorrencia de falhas
+            if ($validator->fails()) {
+                dd($validator);
+                return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+            }
+            */
             $categoria = Categoria::findOrFail($id);
             $categoria->nome = $input['nome'];
             $categoria->save();
@@ -101,6 +112,7 @@ class CategoriaController extends Controller
             return redirect()->route('categorias.index');
 
         } catch (Exception $e) {
+            dd($e->getMessage());
             return redirect()->back()
             ->with('error', $e->getMessage())
             ;
