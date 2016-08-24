@@ -22,7 +22,7 @@ Adicionar Entrada ao EPI
     </p>
   </div>
 
-  
+  <input type="hidden" name="id" id="id" value="{{ $produto->id }}">
   <div class="form-group">
     <label class="control-label col-md-2" for="qntd">Quantidade :</label>
     <div class="col-md-6">

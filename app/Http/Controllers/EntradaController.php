@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EntradaRequest;
 use App\Produto;
 use App\Entrada;
 use Carbon\Carbon;
@@ -30,7 +31,7 @@ class EntradaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(EntradaRequest $request, $id)
     {
         try {
             $input = $request->all();

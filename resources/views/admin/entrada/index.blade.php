@@ -54,7 +54,6 @@ Histórico de Entradas
       </div>
 </div>
 
-@include('admin/entrada/criar')
 
 
 @stop
