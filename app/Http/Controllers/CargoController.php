@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CargoRequest;
 use App\Cargo;
+use Exception;
 
 class CargoController extends Controller
 {
@@ -37,13 +39,16 @@ class CargoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CargoRequest $request)
     {
         try {
             $input = $request->all();
             $cargo = new cargo;
             $cargo->nome = $input['nome'];
-            $cargo->descricao = $input['descricao'];
+            if ($request->has('descricao')) {
+                $cargo->descricao = $input['descricao'];
+            }
+
             $cargo->save();
             return response()->json(
                 ['code' => 200, 'msg' => 'Sucesso']
@@ -78,13 +83,15 @@ class CargoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CargoRequest $request, $id)
     {
         try {
             $input = $request->all();
             $cargo = Cargo::findOrFail($id);
-            $cargo->nome = $input['nome'];
-            $cargo->descricao = $input['descricao'];
+            $cargo->nome = $input['nome']; 
+            if ($request->has('descricao')) {
+                $cargo->descricao = $input['descricao'];
+            }
             $cargo->save();
 
             return redirect()->route('cargos.index');

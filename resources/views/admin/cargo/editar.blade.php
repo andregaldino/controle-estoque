@@ -16,7 +16,7 @@ Editar Cargo
   <div class="form-group">
     <label for="slug" class="col-sm-2 control-label">ID</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" value="{{$cargo->id}}"  readonly  />
+      <input type="text" class="form-control" name="id" value="{{$cargo->id}}"  readonly  />
 
     </div>
   </div>
@@ -29,8 +29,8 @@ Editar Cargo
 
   <div class="form-group">
     <label class="control-label col-md-2" for="email">Descrição :</label>
-    <div class="col-md-10">
-    <textarea name="descricao" id="descricao" >{{ $cargo->descricao }}</textarea>
+    <div class="col-md-6">
+    <textarea name="descricao" id="descricao" class="form-control" >{{ $cargo->descricao }}</textarea>
     </div>          
   </div>
 

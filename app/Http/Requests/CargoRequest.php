@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CategoriaRequest extends Request
+class CargoRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,14 +32,15 @@ class CategoriaRequest extends Request
             case 'POST':
             {
                 return [
-                    'nome'       => 'required|min:3'
+                    'nome'       => 'required|min:3',
+                    //'nome'       => 'required|min:3'
                 ];
                 break;
             }
             case 'PUT':
                 return [
                     'nome'       => 'required|min:3',
-                    'id'       => 'required|numeric|exists:categorias'
+                    'id'       => 'required|numeric|exists:cargos'
                 ];
                 break;
             case 'PATCH':
