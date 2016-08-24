@@ -16,7 +16,7 @@ Editar funcionario
   <div class="form-group">
     <label for="slug" class="col-sm-2 control-label">ID</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" value="{{$funcionario->id}}"  readonly  />
+      <input type="text" class="form-control" name="id" value="{{$funcionario->id}}"  readonly  />
 
     </div>
   </div>

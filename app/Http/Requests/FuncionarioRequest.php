@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class ExameRequest extends Request
+class FuncionarioRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,17 +33,19 @@ class ExameRequest extends Request
             {
                 return [
                     'nome'       => 'required|min:3',
-                    'sigla'       => 'required|min:3',
-                    'duracao'       => 'required|min:3|numeric',
+                    'cpf'       => 'required|min:3|unique:funcionarios,cpf',
+                    'empresa'       => 'required|exists:empresas,id',
+                    'cargo'       => 'required|exists:cargos,id'
                 ];
                 break;
             }
             case 'PUT':
                 return [
+                    'id'       => 'required|numeric|exists:funcionarios',
                     'nome'       => 'required|min:3',
-                    'id'       => 'required|numeric|exists:exames',
-                    'sigla'       => 'required|min:3',
-                    'duracao'       => 'required|min:3|numeric',
+                    'cpf'       => 'required|min:3|unique:funcionarios,cpf',
+                    'empresa'       => 'required|exists:empresas,id',
+                    'cargo'       => 'required|exists:cargos,id'
                 ];
                 break;
             case 'PATCH':
@@ -63,12 +65,16 @@ class ExameRequest extends Request
             'id.numeric' => 'O campo id deve ser numerico',
             'id.exists' => 'O campo id informado não existe',
 
-            'sigla.required' => 'O campo sigla é obrigatorio.',
-            'sigla.min' => 'O campo sigla deve conter mais de 3 caracteres.',
+            'cpf.required' => 'O campo cpf é obrigatorio.',
+            'cpf.min' => 'O campo cpf deve conter mais de 3 caracteres.',
+            'cpf.unique' => 'O cpf já existe no sistema',
 
-            'duracao.required' => 'O campo duracao é obrigatorio.',
-            'duracao.min' => 'O campo duracao deve conter mais de 3 caracteres.',
-            'duracao.numeric' => 'O campo duracao deve ser numerico',
+
+            'empresa.required' => 'O campo empresa é obrigatorio.',
+            'empresa.exists' => 'O campo empresa informado não existe',
+
+            'cargo.required' => 'O campo cargo é obrigatorio.',
+            'cargo.exists' => 'O campo cargo informado não existe',
         ];
     }
 }

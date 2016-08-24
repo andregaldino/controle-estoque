@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FuncionarioRequest;
+use App\Http\Requests\FuncionarioExameRequest;
 use App\Funcionario;
 use App\Empresa;
 use App\Cargo;
 use App\Exame;
 use Carbon\Carbon;
+use Exception;
 
 
 class FuncionarioController extends Controller
@@ -80,7 +83,7 @@ class FuncionarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FuncionarioRequest $request)
     {
         try {
             $input = $request->all();
@@ -134,7 +137,7 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FuncionarioRequest $request, $id)
     {
         try {
             $input = $request->all();
@@ -188,7 +191,7 @@ class FuncionarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeExame(Request $request,$id)
+    public function storeExame(FuncionarioExameRequest $request,$id)
     {
         try {
             $input = $request->all();

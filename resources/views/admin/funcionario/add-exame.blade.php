@@ -12,7 +12,7 @@ Adicionar Exame ao Funcionario
 @section('conteudo')
 <form  role="form" method="POST" action="{{ route('funcionarios.storeExames',$funcionario->id) }}">
 
-
+<input type="hidden" name="id" value="{{ $funcionario->id }}">
   <div class="text-center">
     <h2>{{ $funcionario->nome }}</h2>
     <p>
