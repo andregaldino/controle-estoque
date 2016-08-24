@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ExameRequest;
 use App\Exame;
+use Exception;
 
 class ExameController extends Controller
 {
@@ -37,7 +39,7 @@ class ExameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ExameRequest $request)
     {
         try {
             $input = $request->all();
@@ -79,7 +81,7 @@ class ExameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ExameRequest $request, $id)
     {
         try {
             $input = $request->all();

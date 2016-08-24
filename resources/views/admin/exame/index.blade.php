@@ -42,7 +42,7 @@ Lista de Exames
 			<td>
 				<form method="POST" action="{{ route('exames.destroy',$exame->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
-					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('empresas.store') }}">
+					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('exames.store') }}">
 					<button type="submit" class="btn btn-danger pull-left">delete</button>		
 				</form>
 				<a href="{{ route('exames.edit', $exame->id) }}" class="btn btn-info">
