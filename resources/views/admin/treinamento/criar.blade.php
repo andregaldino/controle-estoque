@@ -9,13 +9,13 @@
       <form  class="form-horizontal formulariocadastro" method="POST">
         <div class="modal-body">
          <div class="form-group">
-          <label class="control-label col-md-2" for="email">Nome:</label>
+          <label class="control-label col-md-2" for="nome">Nome:</label>
           <div class="col-md-10">
             <input type="text" class="form-control" name="nome" id="nome">
           </div>          
         </div>
         <div class="form-group">
-          <label class="control-label col-md-2" for="email">Descrição:</label>
+          <label class="control-label col-md-2" for="descricao">Descrição:</label>
           <div class="col-md-10">
           <textarea name="descricao" class="form-control" id="descricao"></textarea>
           </div>

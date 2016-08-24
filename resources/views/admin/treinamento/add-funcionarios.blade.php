@@ -12,7 +12,7 @@ Adicionar Treinamento aos Funcionarios
 @section('conteudo')
 <form  role="form" method="POST" action="{{ route('treinamentos.storeFuncionarios',$treinamento->id) }}">
 
-
+   <input type="hidden" name="id" value="{{$treinamento->id}}">
   <div class="text-center">
     <h2>{{ $treinamento->nome }}</h2>
     <p>

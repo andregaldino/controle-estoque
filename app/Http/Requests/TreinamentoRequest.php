@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class ExameRequest extends Request
+class TreinamentoRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,17 +33,15 @@ class ExameRequest extends Request
             {
                 return [
                     'nome'       => 'required|min:3',
-                    'sigla'       => 'required|min:3',
-                    'duracao'       => 'required|min:3|numeric',
+                    'descricao'       => 'required|min:3'
                 ];
                 break;
             }
             case 'PUT':
                 return [
                     'nome'       => 'required|min:3',
-                    'id'       => 'required|numeric|exists:cargos',
-                    'sigla'       => 'required|min:3',
-                    'duracao'       => 'required|min:3|numeric',
+                    'id'       => 'required|numeric|exists:treinamentos',
+                    'descricao'       => 'required|min:3',
                 ];
                 break;
             case 'PATCH':
@@ -63,12 +61,8 @@ class ExameRequest extends Request
             'id.numeric' => 'O campo id deve ser numerico',
             'id.exists' => 'O campo id informado não existe',
 
-            'sigla.required' => 'O campo sigla é obrigatorio.',
-            'sigla.min' => 'O campo sigla deve conter mais de 3 caracteres.',
-
-            'duracao.required' => 'O campo duracao é obrigatorio.',
-            'duracao.min' => 'O campo duracao deve conter mais de 3 caracteres.',
-            'duracao.numeric' => 'O campo duracao deve ser numerico',
+            'descricao.required' => 'O campo descricao é obrigatorio.',
+            'descricao.min' => 'O campo descricao deve conter mais de 3 caracteres.',
         ];
     }
 }

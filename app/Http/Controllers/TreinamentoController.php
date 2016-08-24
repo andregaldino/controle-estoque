@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TreinamentoRequest;
+use App\Http\Requests\TreinamentoFuncionarioRequest;
 use App\Treinamento;
 use App\Funcionario;
 use Carbon\Carbon;
+use Exception;
 class TreinamentoController extends Controller
 {
     /**
@@ -40,7 +43,7 @@ class TreinamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TreinamentoRequest $request)
     {
         try {
             $input = $request->all();
@@ -81,7 +84,7 @@ class TreinamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TreinamentoRequest $request, $id)
     {
         try {
             $input = $request->all();
@@ -123,7 +126,7 @@ class TreinamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeFuncionarios(Request $request,$id)
+    public function storeFuncionarios(TreinamentoFuncionarioRequest $request,$id)
     {
         try {
             $input = $request->all();

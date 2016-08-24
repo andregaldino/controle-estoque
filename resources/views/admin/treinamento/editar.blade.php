@@ -16,7 +16,7 @@ Editar treinamento
   <div class="form-group">
     <label for="slug" class="col-sm-2 control-label">ID</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" value="{{$treinamento->id}}"  readonly  />
+      <input type="text" class="form-control" name="id" value="{{$treinamento->id}}"  readonly  />
 
     </div>
   </div>
@@ -30,9 +30,7 @@ Editar treinamento
   <div class="form-group">
     <label for="slug" class="col-sm-2 control-label">Descrição : </label>
     <div class="col-sm-6">
-      <textarea name="descricao" id="descricao" >
-        {{$treinamento->descricao}}
-      </textarea>
+      <textarea name="descricao" class="form-control" id="descricao" >{{$treinamento->descricao}}</textarea>
     </div>
   </div>
 
