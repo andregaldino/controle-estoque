@@ -51,7 +51,10 @@ Relatorio de Entrada e Saida por periodo
 <div class="panel panel-primary ">
 	<div class="panel-heading">
 		<h4 class="panel-title"> 
-			Controle de Estoque por Periodo
+			Controle de Estoque por Periodo :
+			@if(isset($periodo))
+				{{ $periodo['inicio']}} até {{ $periodo['final'] }}
+			@endif
 		</h4>
 	</div>
 	<br />
@@ -71,13 +74,17 @@ Relatorio de Entrada e Saida por periodo
 				<tr>
 					<td>{{$saida['funcionario']}}</td>
 					@foreach($produtos as $produto)
-						@foreach($saida['saidas'] as $valor)
-							@if($valor->id == $produto->id)
-								<td>{{ $valor->qntd_periodo }}</td>
-							@else
-								<td>0</td>
-							@endif
-						@endforeach
+						@if(count($saida['saidas'])>0)
+							@foreach($saida['saidas'] as $valor)
+								@if($valor->id == $produto->id)
+									<td>{{ $valor->qntd_periodo }}</td>
+								@else
+									<td>0</td>
+								@endif
+							@endforeach
+						@else
+							<td>0</td>
+						@endif
 					@endforeach
 				</tr>
 			@endforeach	

@@ -49,7 +49,7 @@ class SaidaController extends Controller
             $saida = new Saida;
             $saida->qntd = $input['qntd'];
 
-            $saida->data = Carbon::createFromFormat('d/m/Y', $input['data']);
+            $saida->data = Carbon::createFromFormat('d/m/Y', $input['data'])->startOfDay();
             $saida->produto()->associate($produto);
             $saida->funcionario()->associate($funcionario);
 
@@ -100,13 +100,17 @@ class SaidaController extends Controller
                     'funcionario' => $value->nome,
                     'funcionario_id' => $value->id,
                     'saidas' => $value->saidas()->HistoricoData([
-                                    'datainicio'=>Carbon::createFromFormat('d/m/Y',$input['datainicio']),
-                                    'datafinal'=>Carbon::createFromFormat('d/m/Y',$input['datafinal'])
+                                    'datainicio'=>Carbon::createFromFormat('d/m/Y',$input['datainicio'])->startOfDay(),
+                                    'datafinal'=>Carbon::createFromFormat('d/m/Y',$input['datafinal'])->endOfDay()
                                     ]
                                 )->get()
                 ];
             }
-            return View('admin.saida.busca',compact('saidas','produtos'));
+            $periodo= [
+                'inicio' =>$input['datainicio'],
+                'final' =>$input['datafinal']
+            ];
+            return View('admin.saida.busca',compact('saidas','produtos','periodo'));
         } catch (Exception $e) {
             $saidas = [];
             dd($e);
