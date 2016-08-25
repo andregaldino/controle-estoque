@@ -21,7 +21,12 @@ Lista de Funcionarios
       </div>
       <br />
       <div class="panel-body">
-<table class="table table-striped " id="table">
+      	<div class="btn-group" role="group" aria-label="...">
+          <a class="btn btn-default btn-sm" href="{{ route('funcionarios.index') }}" role="button">Funcionarios Ativos</a>
+          <a class="btn btn-success btn-sm" href="{{ route('funcionarios.todos')}}" role="button">Funcionarios Ativos e Deminitdos</a>
+          <a class="btn btn-danger btn-sm" href="{{ route('funcionarios.excluidos')}}">Funcionarios Demitidos</a>
+        </div>
+	<table class="table table-striped " id="table">
 	<thead>
 		<tr class="filters">
 			<th>ID</th>

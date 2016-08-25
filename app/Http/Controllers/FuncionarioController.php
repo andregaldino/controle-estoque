@@ -38,7 +38,20 @@ class FuncionarioController extends Controller
      */
     public function getViewDemitidos()
     {
-        $funcionarios = Funcionario::onyTrashed();
+        $funcionarios = Funcionario::onlyTrashed()->get();
+        $empresas = Empresa::all();
+        $cargos = Cargo::all();
+        return View('admin.funcionario.index',compact('funcionarios','empresas','cargos'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getViewTodos()
+    {
+        $funcionarios = Funcionario::withTrashed()->get();
         $empresas = Empresa::all();
         $cargos = Cargo::all();
         return View('admin.funcionario.index',compact('funcionarios','empresas','cargos'));

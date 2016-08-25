@@ -24,12 +24,16 @@ Route::group(['prefix'=>'treinamentos'], function(){
 Route::resource('exames','ExameController');
 Route::resource('cargos','CargoController');
 Route::resource('empresas','EmpresaController');
-Route::resource('funcionarios','FuncionarioController');
+Route::resource('funcionarios','FuncionarioController',['only' => ['index','store','update','edit','destroy']]);
 Route::group(['prefix'=>'funcionarios'], function(){
 	Route::get('adicionar/exames/{funcionario}',['as'=>'funcionarios.getExames', 'uses' => 'FuncionarioController@getViewAddExame']);
 	Route::post('adicionar/exames/{funcionario}',['as'=>'funcionarios.storeExames', 'uses' => 'FuncionarioController@storeExame']);
+	
 	Route::get('exames/{funcionario}',['as'=>'funcionarios.exames', 'uses' => 'FuncionarioController@getViewExame']);
-	Route::get('demitidos',['as'=>'funcionarios.demitidos', 'uses' => 'FuncionarioController@getViewDemitidos']);
+
+	Route::get('excluidos',['as'=>'funcionarios.excluidos', 'uses' => 'FuncionarioController@getViewDemitidos']);
+
+	Route::get('todos',['as'=>'funcionarios.todos', 'uses' => 'FuncionarioController@getViewTodos']);
 });
 Route::resource('epis','ProdutoController');
 Route::group(['prefix'=>'epis'], function(){
