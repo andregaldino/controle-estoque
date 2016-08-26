@@ -59,13 +59,14 @@ Relatorio de Entrada e Saida por periodo
 	</div>
 	<br />
 	<div class="panel-body">
+		<div class="table-responsive">
 		<table class="table table-striped " id="table">
 			
 			<thead>
 				<tr class="filters">
 					<th>Funcionario</th>
 					@foreach($produtos as $produto)
-						<th>{{ $produto->nome }}</th>	
+						<th class="text-center">{{ $produto->nome }} : {{ $produto->medida }}</th>	
 					@endforeach
 				</tr>
 			</thead>
@@ -90,6 +91,7 @@ Relatorio de Entrada e Saida por periodo
 			@endforeach	
 			</tbody>
 		</table>
+		</div>
 	</div>
 </div>
 @endif
