@@ -65,9 +65,15 @@ class FuncionarioController extends Controller
      */
     public function getViewAddExame($id)
     {
-        $funcionario = Funcionario::findOrFail($id);
-        $exames = Exame::all();
-        return View('admin.funcionario.add-exame',compact('funcionario','exames'));
+        try {
+            $funcionario = Funcionario::findOrFail($id);
+            $exames = Exame::all();
+            return View('admin.funcionario.add-exame',compact('funcionario','exames'));    
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error',$e->getMessage());
+        }
+        
     }
 
     /**
@@ -77,8 +83,14 @@ class FuncionarioController extends Controller
      */
     public function getViewExame($id)
     {
-        $funcionario = Funcionario::findOrFail($id);
-        return View('admin.funcionario.exame',compact('funcionario'));
+        try {
+            $funcionario = Funcionario::findOrFail($id);
+            return View('admin.funcionario.exame',compact('funcionario'));    
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error',$e->getMessage());
+        }
+        
     }
     /**
      * Show the form for creating a new resource.
@@ -139,7 +151,8 @@ class FuncionarioController extends Controller
             $cargos = Cargo::all();
             return View('admin.funcionario.editar',compact('funcionario','empresas','cargos'));
         } catch (Exception $e) {
-            return redirect()->back();
+            return redirect()->back()
+            ->with('error',$e->getMessage());
         }
     }
 
@@ -175,8 +188,7 @@ class FuncionarioController extends Controller
 
         } catch (Exception $e) {
             return redirect()->back()
-            ->with('error', $e->getMessage())
-            ;
+            ->with('error', $e->getMessage());
         }
     }
 
@@ -227,8 +239,7 @@ class FuncionarioController extends Controller
 
         } catch (Exception $e) {
             return redirect()->back()
-            ->with('error', $e->getMessage())
-            ;
+            ->with('error', $e->getMessage());
         }
     }
 }

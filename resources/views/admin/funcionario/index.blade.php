@@ -47,6 +47,11 @@ Lista de Funcionarios
 			<td>{{ $funcionario->cargo[0]->nome or "Nenhuma funcao alocada" }}</td>
 			<td>{{ $funcionario->empresa->nome or "Nenhuma empresa alocada" }}</td>
 			<td>
+				@if($funcionario->trashed())
+					<div class="alert alert-danger" role="alert">
+					  Deletado
+					</div>
+				@else
 				<form method="POST" action="{{ route('funcionarios.destroy',$funcionario->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('funcionarios.store') }}">
@@ -63,6 +68,7 @@ Lista de Funcionarios
 				<a href="{{ route('funcionarios.exames', $funcionario->id) }}" class="btn btn-info">
 					<i class="fa fa-pencil-square-o">Detalhes</i>
 				</a>
+				@endif
 			</td>
 		</tr>
 		@endforeach
