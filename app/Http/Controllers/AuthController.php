@@ -176,7 +176,7 @@ class AuthController extends Controller
     {
         Sentinel::logout();
 
-        return redirect()->route('home');
+        return redirect()->route('index');
     }
 
 
