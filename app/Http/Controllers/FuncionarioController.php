@@ -92,15 +92,24 @@ class FuncionarioController extends Controller
         }
         
     }
+    
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function show($id)
     {
-        //
+        try {
+            $funcionario = Funcionario::findOrFail($id);
+            return View('admin.funcionario.show',compact('funcionario'));    
+        } catch (Exception $e) {
+            return redirect()->back()
+            ->with('error',$e->getMessage());
+        }
+        
     }
+
 
     /**
      * Store a newly created resource in storage.

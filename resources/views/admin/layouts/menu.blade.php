@@ -16,21 +16,36 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li id="center-xs" ><a href="{{ route('categorias.index') }}" class="hvr-sweep-to-right tile2">Categoria</a></li>
-                <li id="center-xs" ><a href="{{ route('treinamentos.index') }}" class="hvr-sweep-to-right tile3">Treinamento</a></li>
-
-                <li id="center-xs" ><a href="{{ route('exames.index') }}" class="hvr-sweep-to-right tile3">Exames</a></li>
-                <li id="center-xs" ><a href="{{ route('cargos.index') }}" class="hvr-sweep-to-right tile3">Cargos</a></li>
-                <li id="center-xs" ><a href="{{ route('empresas.index') }}" class="hvr-sweep-to-right tile3">Empresas</a></li>
-                <li id="center-xs" ><a href="{{ route('funcionarios.index') }}" class="hvr-sweep-to-right tile3">Funcionarios</a></li>
-
-                <li id="center-xs" ><a href="{{ route('epis.index') }}" class="hvr-sweep-to-right tile3">EPI</a></li>
-                <li id="center-xs" ><a href="{{ route('entradas.index') }}" class="hvr-sweep-to-right tile3">Entrada</a></li>
-                <li id="center-xs" ><a href="{{ route('saidas.index') }}" class="hvr-sweep-to-right tile3">Saidas</a></li>
-                <li id="center-xs" ><a href="{{ route('saidas.search') }}" class="hvr-sweep-to-right tile3">Relatorios</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produtos <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li  ><a href="{{ route('categorias.index') }}" class="hvr-sweep-to-right tile2">Categorias</a></li>
+                    <li  ><a href="{{ route('epis.index') }}" class="hvr-sweep-to-right tile3">EPIs</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empresa <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li  ><a href="{{ route('cargos.index') }}" class="hvr-sweep-to-right tile3">Cargos</a></li>
+                    <li  ><a href="{{ route('empresas.index') }}" class="hvr-sweep-to-right tile3">Empresas</a></li>
+                    <li  ><a href="{{ route('exames.index') }}" class="hvr-sweep-to-right tile3">Exames</a></li>
+                    <li  ><a href="{{ route('funcionarios.index') }}" class="hvr-sweep-to-right tile3">Funcionarios</a></li>
+                    <li  ><a href="{{ route('treinamentos.index') }}" class="hvr-sweep-to-right tile3">Treinamentos</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Historico <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li  ><a href="{{ route('entradas.index') }}" class="hvr-sweep-to-right tile3">Entrada</a></li>
+                    <li  ><a href="{{ route('saidas.index') }}" class="hvr-sweep-to-right tile3">Saidas</a></li>
+                    <li  ><a href="{{ route('saidas.search') }}" class="hvr-sweep-to-right tile3">Relatorios</a></li>
+                  </ul>
+                </li>
+                
                 
             </ul>
-            <ul class="nav navbar-nav navbar-right icon-list hidden-xs">
+            <ul class="nav navbar-nav navbar-right">
+                <li><p class="navbar-text">{{Sentinel::getUser()->first_name . " " . Sentinel::getUser()->last_name }}  </p></li>
                 <li><a href="{{ route('logout') }}" >Sair</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->

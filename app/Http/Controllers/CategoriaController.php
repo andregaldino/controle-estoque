@@ -43,18 +43,6 @@ class CategoriaController extends Controller
     {
         try {
             $input = $request->all();
-            /*
-            $validator = Validator::make($input, $request->rules(), $request->messages());
-            // verificando a ocorrencia de falhas
-            if ($validator->fails()) {
-                return response()->json([
-                    'message' => 'validation_faild',
-                    'errors' => $valid->errors()
-                ]);
-            } 
-            */
-
-            $input = $request->all();
             $categoria = new Categoria;
             $categoria->nome = $input['nome'];
             $categoria->save();

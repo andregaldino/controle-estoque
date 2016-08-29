@@ -30,7 +30,6 @@
                         placement: "top"
                     }).tooltip("show");
                     }, 500)
-                    //$('[data-toggle="tooltip"]').tooltip('show');
                 }); 
                     
             }

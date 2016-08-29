@@ -17,7 +17,6 @@ Histórico de Saidas
         <h4 class="panel-title"> 
           Histórico de Saida
         </h4>
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
       </div>
       <br />
       <div class="panel-body">
@@ -29,7 +28,6 @@ Histórico de Saidas
 			<th>Data de saida</th>
 			<th>Qntd</th>
 			<th>Funcionario</th>
-			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -41,11 +39,12 @@ Histórico de Saidas
 			<td>{{ $saida->data }}</td>
 			<td>{{ $saida->qntd }}</td>
 			<td>{{ $saida->funcionario->nome }}</td>
-			<td>
-				<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('saidas.store') }}">
-			</td>
 		</tr>
 		@endforeach
+		@else
+			<tr>
+				<td colspan="5" class="text-center">Não existe nenhum registro</td>
+			</tr>
 		@endif
 	</tbody>
 </table>
@@ -55,7 +54,4 @@ Histórico de Saidas
 
 @stop
 
-@section('script')
-<script type="text/javascript" src="{{ asset('js/ajax.js') }}"></script>
-@stop
 

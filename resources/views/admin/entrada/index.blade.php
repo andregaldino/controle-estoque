@@ -17,7 +17,6 @@ Histórico de Entradas
         <h4 class="panel-title"> 
           Histórico de Entradas
         </h4>
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
       </div>
       <br />
       <div class="panel-body">
@@ -28,7 +27,6 @@ Histórico de Entradas
 			<th>EPI</th>
 			<th>Data de entrada</th>
 			<th>Qntd</th>
-			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -39,14 +37,12 @@ Histórico de Entradas
 			<td>{{ $entrada->produto->nome }}</td>
 			<td>{{ $entrada->data }}</td>
 			<td>{{ $entrada->qntd }}</td>
-			<td>
-				<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('entradas.store') }}">
-				<a href="{{ route('entradas.edit', $entrada->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">edit</i>
-				</a>
-			</td>
 		</tr>
 		@endforeach
+		@else
+			<tr>
+				<td colspan="4" class="text-center">Não existe nenhum registro</td>
+			</tr>
 		@endif
 	</tbody>
 </table>
@@ -57,8 +53,3 @@ Histórico de Entradas
 
 
 @stop
-
-@section('script')
-<script type="text/javascript" src="{{ asset('js/ajax.js') }}"></script>
-@stop
-

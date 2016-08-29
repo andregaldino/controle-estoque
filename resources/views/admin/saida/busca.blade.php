@@ -66,7 +66,7 @@ Relatorio de Entrada e Saida por periodo
 				<tr class="filters">
 					<th>Funcionario</th>
 					@foreach($produtos as $produto)
-						<th class="text-center">{{ $produto->nome }} : {{ $produto->medida }}</th>	
+						<th>{{ $produto->nome }} : {{ $produto->medida }}</th>	
 					@endforeach
 				</tr>
 			</thead>

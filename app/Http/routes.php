@@ -37,7 +37,9 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('adicionar/exames/{funcionario}',['as'=>'funcionarios.getExames', 'uses' => 'FuncionarioController@getViewAddExame']);
 		Route::post('adicionar/exames/{funcionario}',['as'=>'funcionarios.storeExames', 'uses' => 'FuncionarioController@storeExame']);
 
-		Route::get('exames/{funcionario}',['as'=>'funcionarios.exames', 'uses' => 'FuncionarioController@getViewExame']);
+		Route::get('exames/{funcionario}/detalhes',['as'=>'funcionarios.exames', 'uses' => 'FuncionarioController@getViewExame']);
+
+		Route::get('{funcionario}/detalhes',['as'=>'funcionarios.show', 'uses' => 'FuncionarioController@show']);
 
 		Route::get('excluidos',['as'=>'funcionarios.excluidos', 'uses' => 'FuncionarioController@getViewDemitidos']);
 

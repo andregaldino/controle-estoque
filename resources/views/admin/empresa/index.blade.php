@@ -53,6 +53,10 @@ Lista de Empresas
 			</td>
 		</tr>
 		@endforeach
+		@else
+			<tr>
+				<td colspan="6" class="text-center">Não existe nenhum registro</td>
+			</tr>
 		@endif
 	</tbody>
 </table>

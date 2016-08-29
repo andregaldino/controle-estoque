@@ -68,10 +68,17 @@ Lista de Funcionarios
 				<a href="{{ route('funcionarios.exames', $funcionario->id) }}" class="btn btn-info">
 					<i class="fa fa-pencil-square-o">Detalhes</i>
 				</a>
+				<a href="{{ route('funcionarios.show', $funcionario->id) }}" class="btn btn-info">
+					<i class="fa fa-pencil-square-o">info</i>
+				</a>
 				@endif
 			</td>
 		</tr>
 		@endforeach
+		@else
+			<tr>
+				<td colspan="6" class="text-center">Não existe nenhum registro</td>
+			</tr>
 		@endif
 	</tbody>
 </table>

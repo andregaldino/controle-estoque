@@ -49,6 +49,10 @@ Lista de Categorias
 			</td>
 		</tr>
 		@endforeach
+		@else
+			<tr>
+				<td colspan="4" class="text-center">Não existe nenhum registro</td>
+			</tr>
 		@endif
 	</tbody>
 </table>
