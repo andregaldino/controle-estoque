@@ -11,9 +11,25 @@ class UserSeed extends Seeder
      */
     public function run()
     {
-    	\Sentinel::registerAndActivate(array(
+    	$admin = \Sentinel::registerAndActivate(array(
+            'first_name' => 'André',
+            'last_name' => 'Galdino',
 		    'email'    => 'andre@galdino.com',
 		    'password' => 'abc123*',
 		));
+
+        //criando os grupos
+        $adminRole = \Sentinel::getRoleRepository()->createModel()->create([
+            'name' => 'Admin',
+            'slug' => 'admin',
+            'permissions' => array('admin' => 1),
+        ]);
+
+        \Sentinel::getRoleRepository()->createModel()->create([
+            'name'  => 'User',
+            'slug'  => 'user',
+        ]);
+        //adicionando o grupo admin ao user admin
+        $admin->roles()->attach($adminRole);
     }
 }
