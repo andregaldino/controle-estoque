@@ -31,9 +31,7 @@
                 
             </ul>
             <ul class="nav navbar-nav navbar-right icon-list hidden-xs">
-                <li><a href="#" class="hvr-sweep-to-right instagram"><i class="fa fa-instagram fa-lg"></i></a></li>
-                <li><a href="#" class="hvr-sweep-to-right twitter"><i class="fa fa-twitter fa-lg"></i></a></li>
-                <li><a href="#" class="hvr-sweep-to-right facebook"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li><a href="{{ route('logout') }}" >Sair</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>
