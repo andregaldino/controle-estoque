@@ -38,7 +38,7 @@ class AuthController extends Controller
         try {
             if(Sentinel::authenticate($dados, false))
             {
-                return redirect()->route("categorias.index");
+                return redirect()->route("dashboard");
             }
 
             throw new Exception("Usuario ou Senha não conferem");

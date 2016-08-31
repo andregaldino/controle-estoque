@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="col-lg-4 text-center"></div>
 		<div class="col-lg-4 text-center">			
-				Copyright &copy; Desenvolvido por Andre			
+				Copyright &copy; Desenvolvido por <a href="https://br.linkedin.com/in/angaldino" target="_blank">Andre	</a>
 		</div>
 		<div class="col-lg-4 text-center"></div>
 	</div>

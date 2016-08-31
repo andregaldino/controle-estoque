@@ -46,10 +46,10 @@ Lista de Empresas
 				<form method="POST" action="{{ route('empresas.destroy',$empresa->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('empresas.store') }}">
-					<button type="submit" class="btn btn-danger pull-left">delete</button>		
+					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>
 				</form>
-				<a href="{{ route('empresas.edit', $empresa->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">edit</i>
+				<a href="{{ route('empresas.edit', $empresa->id) }}" class="btn btn-mini">
+					<i class="fa fa-pencil-square-o"></i>
 				</a>
 			</td>
 		</tr>

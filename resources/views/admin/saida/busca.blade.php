@@ -75,17 +75,11 @@ Relatorio de Entrada e Saida por periodo
 				<tr>
 					<td>{{$saida['funcionario']}}</td>
 					@foreach($produtos as $produto)
-						@if(count($saida['saidas'])>0)
-							@foreach($saida['saidas'] as $valor)
-								@if($valor->id == $produto->id)
-									<td>{{ $valor->qntd_periodo }}</td>
-								@else
-									<td>0</td>
-								@endif
-							@endforeach
-						@else
-							<td>0</td>
-						@endif
+						@foreach($saida['saidas'] as $valor)
+							@if($valor['id'] == $produto->id)
+								<td>{{ $valor['qntd'] }}</td>
+							@endif
+						@endforeach
 					@endforeach
 				</tr>
 			@endforeach	

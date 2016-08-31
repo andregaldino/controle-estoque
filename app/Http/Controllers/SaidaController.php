@@ -91,21 +91,49 @@ class SaidaController extends Controller
     {
         try {
             $input = $request->all();
-            $users = Funcionario::orderBy('nome','acs')->withTrashed()->get();
-            $produtos = Produto::orderBy('nome','acs')->get();
+            $users = Funcionario::orderBy('nome','asc')->withTrashed()->get();
+            $produtos = Produto::orderBy('nome','asc')->get();
 
             $saidas = array();
             foreach ($users as $value) {
-                $saidas[] =[
-                    'funcionario' => $value->nome,
-                    'funcionario_id' => $value->id,
-                    'saidas' => $value->saidas()->HistoricoData([
+                    $out = [];
+                    $vetor = $value->saidas()->HistoricoData([
                                     'datainicio'=>Carbon::createFromFormat('d/m/Y',$input['datainicio'])->startOfDay(),
                                     'datafinal'=>Carbon::createFromFormat('d/m/Y',$input['datafinal'])->endOfDay()
                                     ]
-                                )->get()
+                                )->get();
+                    //preenche o array de saidas com o id do produto e a quantidade para o produto, sendo zero para caso o produto nao esteja listado no retorno do metodo HistoricoData
+                    foreach ($produtos as $produto) {
+                        $achou = false;
+                        if (count($vetor)>0) {
+                            foreach ($vetor as $v) {
+                                if ($v->id == $produto->id) {
+                                    $out[] = [
+                                        'id' => $v->id,
+                                        'qntd' => $v->qntd_periodo,
+                                        'nome' => $produto->nome 
+                                    ];
+                                $achou = true;
+                                break;
+                                }
+                            }
+                            if (!$achou) {
+                                $out[] = [
+                                        'id' => $produto->id,
+                                        'qntd' => 0,
+                                        'nome' => $produto->nome 
+                                    ];
+                            }
+                        }
+                    }
+                $saidas[] =[
+                    'funcionario' => $value->nome,
+                    'funcionario_id' => $value->id,
+                    'saidas' => $out
                 ];
             }
+
+
             $periodo= [
                 'inicio' =>$input['datainicio'],
                 'final' =>$input['datafinal']

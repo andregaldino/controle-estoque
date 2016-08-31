@@ -22,7 +22,7 @@ class Saida extends Model
     {
         return $query
         ->leftjoin('produtos','produto_id','=','produtos.id')
-        ->select(DB::raw('sum(qntd) as qntd_periodo, produtos.nome as nome, produtos.id as id'))
+        ->select(DB::raw('sum(qntd) as qntd_periodo, CONCAT(produtos.nome ," ", produtos.medida) as nome,produtos.medida as tamanho, produtos.id as id'))
         ->groupBy('produto_id');
     }
 
@@ -32,4 +32,14 @@ class Saida extends Model
         ->Historico()
         ->whereBetween('data',$type);
     }
+
+    public function scopeHistoricoLastMonth($query, $type)
+    {
+        return $query
+        ->Historico()
+        ->where('saidas.created_at','>=',$type);
+    }
+
+
+
 }

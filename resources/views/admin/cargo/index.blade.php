@@ -45,10 +45,10 @@ Lista de Cargos
 				<form method="POST" action="{{ route('cargos.destroy',$cargo->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('cargos.store') }}">
-					<button type="submit" class="btn btn-danger pull-left">delete</button>		
+					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>
 				</form>
-				<a href="{{ route('cargos.edit', $cargo->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">edit</i>
+				<a href="{{ route('cargos.edit', $cargo->id) }}" class="btn btn-mini">
+					<i class="fa fa-pencil-square-o"></i>
 				</a>
 			</td>
 		</tr>

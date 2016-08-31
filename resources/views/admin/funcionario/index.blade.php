@@ -57,21 +57,21 @@ Lista de Funcionarios
 				<form method="POST" action="{{ route('funcionarios.destroy',$funcionario->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('funcionarios.store') }}">
-					<button type="submit" class="btn btn-danger pull-left">delete</button>		
+					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>
 				</form>
 				&nbsp
-				<a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">edit</i>
+				<a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="btn btn-mini">
+					<i class="fa fa-pencil-square-o"></i>
 				</a>
-				<a href="{{ route('funcionarios.getExames', $funcionario->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">Exame</i>
+				<a href="{{ route('funcionarios.getExames', $funcionario->id) }}" class="btn btn-mini">
+					<i class="fa fa-plus-square-o"></i>
 				</a>
 
-				<a href="{{ route('funcionarios.exames', $funcionario->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">Detalhes</i>
+				<a href="{{ route('funcionarios.exames', $funcionario->id) }}" class="btn btn-mini">
+					<i class="fa fa-list-alt"></i>
 				</a>
-				<a href="{{ route('funcionarios.show', $funcionario->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">info</i>
+				<a href="{{ route('funcionarios.show', $funcionario->id) }}" class="btn btn-mini">
+					<i class="fa fa-eye"></i>
 				</a>
 				@endif
 			</td>

@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-                <a href="/" class="navbar-brand">Painel Administrativo</a>
+                <a href="{{ route('dashboard') }}" class="navbar-brand">Painel Administrativo</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

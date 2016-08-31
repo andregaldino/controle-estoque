@@ -65,5 +65,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::resource('entradas','EntradaController');
 
+	Route::get('dashboard',['as'=>'dashboard','uses'=>'FrontendController@dashboard']);
+
 
 });

@@ -51,17 +51,17 @@ Lista de EPI
 				<form method="POST" action="{{ route('epis.destroy',$produto->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('epis.store') }}">
-					<button type="submit" class="btn btn-danger pull-left">delete</button>		
+					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>
 				</form>
 				&nbsp
-				<a href="{{ route('epis.edit', $produto->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">edit</i>
+				<a href="{{ route('epis.edit', $produto->id) }}" class="btn btn-mini">
+					<i class="fa fa-pencil-square-o"></i>
 				</a>
-				<a href="{{ route('epis.storeEntrada', $produto->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">Entrada</i>
+				<a href="{{ route('epis.storeEntrada', $produto->id) }}" class="btn btn-mini">
+					<i class="fa fa-sign-in"></i>
 				</a>
-				<a href="{{ route('epis.storeSaida', $produto->id) }}" class="btn btn-info">
-					<i class="fa fa-pencil-square-o">Saida</i>
+				<a href="{{ route('epis.storeSaida', $produto->id) }}" class="btn btn-mini">
+					<i class="fa fa-sign-out"></i>
 				</a>
 			</td>
 		</tr>

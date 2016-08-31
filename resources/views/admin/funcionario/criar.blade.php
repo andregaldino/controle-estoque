@@ -23,7 +23,7 @@
         <div class="form-group">
           <label class="control-label col-md-2" for="email">Empresa :</label>
           <div class="col-md-10">
-            <select class="form-control" name="empresa">
+            <select class="form-control" name="empresa" id="empresa">
               @if(count($empresas)>0)
                 @foreach($empresas as $empresa)
                   <option value="{{ $empresa->id }}">{{ $empresa->nome }}</option>
@@ -37,7 +37,7 @@
         <div class="form-group">
           <label class="control-label col-md-2" for="email">Cargo :</label>
           <div class="col-md-10">
-            <select class="form-control" name="cargo">
+            <select class="form-control" name="cargo" id="cargo">
               @if(count($cargos)>0)
                 @foreach($cargos as $cargo)
                   <option value="{{ $cargo->id }}">{{ $cargo->nome }}</option>
