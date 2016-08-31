@@ -6,8 +6,9 @@ Histórico de Entradas
 
 
 @section('css')
-
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 @stop
+
 
 
 @section('conteudo')
@@ -39,10 +40,6 @@ Histórico de Entradas
 			<td>{{ $entrada->qntd }}</td>
 		</tr>
 		@endforeach
-		@else
-			<tr>
-				<td colspan="4" class="text-center">Não existe nenhum registro</td>
-			</tr>
 		@endif
 	</tbody>
 </table>
@@ -52,4 +49,9 @@ Histórico de Entradas
 
 
 
+@stop
+@section('script')
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/tables.js') }}"></script>
 @stop

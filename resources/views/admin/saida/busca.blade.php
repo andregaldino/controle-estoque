@@ -25,10 +25,10 @@ Relatorio de Entrada e Saida por periodo
 				<form action="{{ route('saidas.search') }}" method="POST" class="form-inline">
 					<fieldset>
 						<div class="form-group">
-							<input type="date" name="datainicio" class="form-control data-picker">
+							<input type="text" name="datainicio" placeholder="dd/mm/YYYY" class="form-control data-picker">
 						</div>
 						<div class="form-group">
-							<input type="date" name="datafinal" class="form-control data-picker">
+							<input type="text" name="datafinal" placeholder="dd/mm/YYYY" class="form-control data-picker">
 						</div>
 						<div class="form-group">
 							<select class="form-control" name="tipo">

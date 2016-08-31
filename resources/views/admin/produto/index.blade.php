@@ -6,7 +6,7 @@ Lista de EPI
 
 
 @section('css')
-
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 @stop
 
 
@@ -17,7 +17,11 @@ Lista de EPI
         <h4 class="panel-title"> 
           Lista de Equipamentos de Proteção Individual
         </h4>
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target=".modalcadastro">Cadastrar</button>
+		<div class="pull-right">
+			<span data-toggle="tooltip" title="Adicionar EPI" data-container="body">
+				<a href="#" data-toggle="modal" data-target=".modalcadastro"><i class="fa fa-plus-circle branco" aria-hidden="true"></i></a>
+			</span>
+		</div>
       </div>
       <br />
       <div class="panel-body">
@@ -62,10 +66,6 @@ Lista de EPI
 			</td>
 		</tr>
 		@endforeach
-		@else
-			<tr>
-				<td colspan="7" class="text-center">Não existe nenhum registro</td>
-			</tr>
 		@endif
 	</tbody>
 </table>
@@ -79,5 +79,8 @@ Lista de EPI
 
 @section('script')
 <script type="text/javascript" src="{{ asset('js/ajax.js') }}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/tables.js') }}"></script>
 @stop
 

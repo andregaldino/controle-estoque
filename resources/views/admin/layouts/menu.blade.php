@@ -8,9 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <ul class="nav nav-justified">
-                <li><a href="/" class="navbar-brand">Painel Administrativo</a></li>
-            </ul>
+                <a href="/" class="navbar-brand">Painel Administrativo</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
