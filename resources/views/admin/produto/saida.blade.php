@@ -52,7 +52,7 @@ Adicionar Saida de EPI
   <div class="form-group">
     <label class="control-label col-md-2" for="data">Data de Entrada :</label>
     <div class="col-md-6">
-    <input type="date" class="form-control data-picker" name="data" id="data">
+    <input type="text" class="form-control data-picker" name="data" id="data">
     </div>          
   </div>
   <a class="btn btn-danger" href="{{route('epis.index')}}">
