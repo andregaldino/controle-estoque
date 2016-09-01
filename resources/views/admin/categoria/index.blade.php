@@ -44,11 +44,15 @@ Lista de Categorias
 				<form method="POST" action="{{ route('categorias.destroy',$categoria->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('categorias.store') }}">
+					<span data-toggle="tooltip" title="Exlcuir Categoria" data-container="body">
 					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>		
+					</span>
 				</form>
+				<span data-toggle="tooltip" title="Editar Categoria" data-container="body">
 				<a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-mini">
 					<i class="fa fa-pencil-square-o"></i>
 				</a>
+				</span>
 			</td>
 		</tr>
 		@endforeach

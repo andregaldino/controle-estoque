@@ -51,18 +51,26 @@ Lista de EPI
 				<form method="POST" action="{{ route('epis.destroy',$produto->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('epis.store') }}">
+					<span data-toggle="tooltip" title="Excluir EPI" data-container="body">
 					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>
+					</span>
 				</form>
 				&nbsp
+				<span data-toggle="tooltip" title="Editar EPI" data-container="body">
 				<a href="{{ route('epis.edit', $produto->id) }}" class="btn btn-mini">
 					<i class="fa fa-pencil-square-o"></i>
 				</a>
+				</span>
+				<span data-toggle="tooltip" title="Adicionar Entrada ao EPI" data-container="body">
 				<a href="{{ route('epis.storeEntrada', $produto->id) }}" class="btn btn-mini">
 					<i class="fa fa-sign-in"></i>
 				</a>
+				</span>
+				<span data-toggle="tooltip" title="Adcionar Saida ao EPI" data-container="body">
 				<a href="{{ route('epis.storeSaida', $produto->id) }}" class="btn btn-mini">
 					<i class="fa fa-sign-out"></i>
 				</a>
+				</span>
 			</td>
 		</tr>
 		@endforeach

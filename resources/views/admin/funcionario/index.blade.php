@@ -57,22 +57,32 @@ Lista de Funcionarios
 				<form method="POST" action="{{ route('funcionarios.destroy',$funcionario->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('funcionarios.store') }}">
+					<span data-toggle="tooltip" title="Excluir Funcionario" data-container="body">
 					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>
+					</span>
 				</form>
 				&nbsp
+				<span data-toggle="tooltip" title="Editar Funcionario" data-container="body">
 				<a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="btn btn-mini">
 					<i class="fa fa-pencil-square-o"></i>
 				</a>
+				</span>
+				<span data-toggle="tooltip" title="Visualizar Exames" data-container="body">
 				<a href="{{ route('funcionarios.getExames', $funcionario->id) }}" class="btn btn-mini">
 					<i class="fa fa-plus-square-o"></i>
 				</a>
-
+				</span>
+				<span data-toggle="tooltip" title="Adicionar Exames ao Funcionario" data-container="body">
 				<a href="{{ route('funcionarios.exames', $funcionario->id) }}" class="btn btn-mini">
 					<i class="fa fa-list-alt"></i>
 				</a>
+				</span>
+
+				<span data-toggle="tooltip" title="Visualizar o Funcionario" data-container="body">
 				<a href="{{ route('funcionarios.show', $funcionario->id) }}" class="btn btn-mini">
 					<i class="fa fa-eye"></i>
 				</a>
+				</span>
 				@endif
 			</td>
 		</tr>

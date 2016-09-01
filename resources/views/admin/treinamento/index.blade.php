@@ -45,14 +45,20 @@ Lista de Treinamentos
 				<form method="POST" action="{{ route('treinamentos.destroy',$treinamento->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('treinamentos.store') }}">
+					<span data-toggle="tooltip" title="Excluir Treinamento" data-container="body">
 					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>
+					</span>
 				</form>
+				<span data-toggle="tooltip" title="Editar Treinamento" data-container="body">
 				<a href="{{ route('treinamentos.edit', $treinamento->id) }}" class="btn btn-mini">
 					<i class="fa fa-pencil-square-o"></i>
 				</a>
+				</span>
+				<span data-toggle="tooltip" title="Adicionar Funcionario ao Treinamento" data-container="body">
 				<a href="{{ route('treinamentos.addFuncionarios', $treinamento->id) }}" class="btn btn-mini">
 					<i class="fa fa-user-plus"></i>
 				</a>
+				</span>
 			</td>
 		</tr>
 		@endforeach

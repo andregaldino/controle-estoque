@@ -16,7 +16,7 @@ Adicionar Entrada ao EPI
   <div class="text-center">
     <h2>{{ $produto->nome }}</h2>
     <p>
-      <strong>Tamhno :</strong> {{ $produto->medida }}<br>
+      <strong>Tamanho :</strong> {{ $produto->medida }}<br>
       <strong>CA :</strong> {{ $produto->ca }}<br>
       <strong>Categoria :</strong> {{ $produto->categoria->nome }}<br>
     </p>

@@ -45,11 +45,15 @@ Lista de Exames
 				<form method="POST" action="{{ route('exames.destroy',$exame->id) }}">
 					<input name="_method" type="hidden" value="DELETE">
 					<input type="hidden" name="urlcadastro" class="urlcadastro" value="{{ route('exames.store') }}">
-					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>	
+					<span data-toggle="tooltip" title="Excluir Exame" data-container="body">
+					<button type="submit" class="btn btn-mini pull-left"><i class="fa fa-trash"></i></button>
+					</span>	
 				</form>
+				<span data-toggle="tooltip" title="Editar Exame" data-container="body">
 				<a href="{{ route('exames.edit', $exame->id) }}" class="btn btn-mini">
 					<i class="fa fa-pencil-square-o"></i>
 				</a>
+				</span>
 			</td>
 		</tr>
 		@endforeach
