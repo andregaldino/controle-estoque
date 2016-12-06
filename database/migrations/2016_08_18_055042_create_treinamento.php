@@ -18,6 +18,7 @@ class CreateTreinamento extends Migration
             $table->mediumText('descricao');
             $table->timestamps();
             $table->softDeletes();
+            $table->engine = 'InnoDB';
         });
     }
 

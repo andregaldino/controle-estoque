@@ -21,6 +21,7 @@ class CreateCargoExame extends Migration
 
             $table->foreign('exame_id')->references('id')->on('exames');
             $table->foreign('cargo_id')->references('id')->on('cargos');
+            $table->engine = 'InnoDB';
         });
     }
 

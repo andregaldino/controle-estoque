@@ -21,6 +21,7 @@ class CreateTreinamentoFuncionario extends Migration
 
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');
             $table->foreign('treinamento_id')->references('id')->on('treinamentos');
+            $table->engine = 'InnoDB';
         });
     }
 

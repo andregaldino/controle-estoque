@@ -17,6 +17,7 @@ class CreateCategoria extends Migration
             $table->string('nome');
             $table->timestamps();
             $table->softDeletes();
+            $table->engine = 'InnoDB';
         });   
     }
     /**

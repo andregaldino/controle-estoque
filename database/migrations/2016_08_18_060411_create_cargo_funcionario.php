@@ -21,6 +21,7 @@ class CreateCargoFuncionario extends Migration
 
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');
             $table->foreign('cargo_id')->references('id')->on('cargos');
+            $table->engine = 'InnoDB';
         });
     }
 

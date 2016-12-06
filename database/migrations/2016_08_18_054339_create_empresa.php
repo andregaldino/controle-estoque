@@ -18,7 +18,7 @@ class CreateEmpresa extends Migration
             $table->string('razao');
             $table->string('cnpj');
             $table->timestamps();
-
+            $table->engine = 'InnoDB';
         });
     }
 

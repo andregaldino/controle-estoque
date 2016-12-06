@@ -19,6 +19,7 @@ class CreateExame extends Migration
             $table->integer('duracao');
             $table->timestamps();
             $table->softDeletes();
+            $table->engine = 'InnoDB';
         });
     }
 

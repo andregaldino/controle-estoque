@@ -20,6 +20,7 @@ class CreateLembrete extends Migration
             $table->softDeletes();
 
             $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->engine = 'InnoDB';
         });
     }
 

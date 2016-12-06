@@ -22,6 +22,7 @@ class CreateExameFuncionario extends Migration
 
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');
             $table->foreign('exame_id')->references('id')->on('exames');
+            $table->engine = 'InnoDB';
         });
     }
 

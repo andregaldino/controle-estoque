@@ -22,7 +22,9 @@ class CreateSaida extends Migration
 
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');
             $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->engine = 'InnoDB';
         });
+
     }
 
     /**

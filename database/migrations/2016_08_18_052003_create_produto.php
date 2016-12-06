@@ -22,6 +22,7 @@ class CreateProduto extends Migration
             $table->softDeletes();
 
             $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->engine = 'InnoDB';
         });
     }
 

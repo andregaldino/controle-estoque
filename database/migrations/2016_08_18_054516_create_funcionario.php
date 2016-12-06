@@ -21,6 +21,7 @@ class CreateFuncionario extends Migration
             $table->softDeletes();
 
             $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->engine = 'InnoDB';
         });
     }
 

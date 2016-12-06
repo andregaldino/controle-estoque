@@ -20,6 +20,7 @@ class CreateEntrada extends Migration
             $table->timestamps();
 
             $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->engine = 'InnoDB';
         });
     }
 
