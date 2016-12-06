@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 	Route::resource('entradas','EntradaController');
+	Route::resource('acidentes','AcidenteController');
+	Route::resource('tiposacidentes','TipoAcidenteController');
 
 	Route::get('dashboard',['as'=>'dashboard','uses'=>'FrontendController@dashboard']);
 

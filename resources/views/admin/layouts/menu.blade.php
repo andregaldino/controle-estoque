@@ -29,6 +29,8 @@
                     <li  ><a href="{{ route('exames.index') }}" class="hvr-sweep-to-right tile3">Exames</a></li>
                     <li  ><a href="{{ route('funcionarios.index') }}" class="hvr-sweep-to-right tile3">Funcionarios</a></li>
                     <li  ><a href="{{ route('treinamentos.index') }}" class="hvr-sweep-to-right tile3">Treinamentos</a></li>
+                    <li  ><a href="{{ route('tiposacidentes.index') }}" class="hvr-sweep-to-right tile3">Tipo de Acidentes</a></li>
+                    <li  ><a href="{{ route('acidentes.index') }}" class="hvr-sweep-to-right tile3">Acidentes</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">

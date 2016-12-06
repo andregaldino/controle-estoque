@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Acidentes extends Migration
+class CreateAcidentes extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,6 @@ class Acidentes extends Migration
     {
          Schema::create('acidentes',function(Blueprint $table){
             $table->increments('id');
-            $table->string('nome');
             $table->string('descricao');
             $table->string('procedimento');
             $table->boolean('culpado_inicial');

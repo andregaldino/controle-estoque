@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CargoRequest;
-use App\Cargo;
+use App\Http\Requests\TiposRequest;
+use App\TipoAcidente;
 use Exception;
 
-class CargoController extends Controller
+class TipoAcidenteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class CargoController extends Controller
      */
     public function index()
     {
-        $cargos = Cargo::all();
-        return View('admin.cargo.index',compact('cargos'));
+        $tipos = TipoAcidente::all();
+        return View('admin.tipoacidente.index',compact('tipos'));
     }
 
     /**
@@ -39,17 +39,17 @@ class CargoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CargoRequest $request)
+    public function store(TiposRequest $request)
     {
         try {
             $input = $request->all();
-            $cargo = new Cargo;
-            $cargo->nome = $input['nome'];
+            $tipo = new TipoAcidente;
+            $tipo->nome = $input['nome'];
             if ($request->has('descricao')) {
-                $cargo->descricao = $input['descricao'];
+                $tipo->descricao = $input['descricao'];
             }
 
-            $cargo->save();
+            $tipo->save();
             return response()->json(
                 ['code' => 200, 'msg' => 'Sucesso']
             );
@@ -69,8 +69,8 @@ class CargoController extends Controller
     public function edit($id)
     {
         try {
-            $cargo = Cargo::findOrFail($id);
-            return View('admin.cargo.editar',compact('cargo'));
+            $tipo = TipoAcidente::findOrFail($id);
+            return View('admin.tipoacidente.editar',compact('tipo'));
         } catch (Exception $e) {
             return redirect()->back();
         }
@@ -83,18 +83,18 @@ class CargoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CargoRequest $request, $id)
+    public function update(TiposRequest $request, $id)
     {
         try {
             $input = $request->all();
-            $cargo = Cargo::findOrFail($id);
-            $cargo->nome = $input['nome']; 
+            $tipo = TipoAcidente::findOrFail($id);
+            $tipo->nome = $input['nome']; 
             if ($request->has('descricao')) {
-                $cargo->descricao = $input['descricao'];
+                $tipo->descricao = $input['descricao'];
             }
-            $cargo->save();
+            $tipo->save();
 
-            return redirect()->route('cargos.index');
+            return redirect()->route('tiposacidentes.index');
 
         } catch (Exception $e) {
             return redirect()->back()
@@ -112,8 +112,8 @@ class CargoController extends Controller
     public function destroy($id)
     {
         try {
-            $cargo = Cargo::findOrFail($id);
-            $cargo->delete();
+            $tipo = TipoAcidente::findOrFail($id);
+            $tipo->delete();
             return redirect()->back();
         } catch (Exception $e) {
             return redirect()->back()
