@@ -13,7 +13,6 @@ class ComposerStaticInit8df505a5e40f45966923507d9b968d23
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
-        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
@@ -57,6 +56,7 @@ class ComposerStaticInit8df505a5e40f45966923507d9b968d23
         'P' => 
         array (
             'Psy\\' => 4,
+            'Psr\\Log\\' => 8,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -183,6 +183,10 @@ class ComposerStaticInit8df505a5e40f45966923507d9b968d23
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -232,10 +236,6 @@ class ComposerStaticInit8df505a5e40f45966923507d9b968d23
     public static $prefixesPsr0 = array (
         'P' => 
         array (
-            'Psr\\Log\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/psr/log',
-            ),
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
@@ -284,21 +284,12 @@ class ComposerStaticInit8df505a5e40f45966923507d9b968d23
             array (
                 0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src',
             ),
-            'ComponentInstaller' => 
-            array (
-                0 => __DIR__ . '/..' . '/robloach/component-installer/src',
-            ),
-        ),
-        'A' => 
-        array (
-            'Assetic' => 
-            array (
-                0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
-            ),
         ),
     );
 
     public static $classMap = array (
+        'CreateAcidenteFuncionario' => __DIR__ . '/../..' . '/database/migrations/2016_12_06_152449_create_acidente_funcionario.php',
+        'CreateAcidentes' => __DIR__ . '/../..' . '/database/migrations/2016_12_06_151554_create_acidentes.php',
         'CreateCargo' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_060249_create_cargo.php',
         'CreateCargoExame' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_060404_create_cargo_exame.php',
         'CreateCargoFuncionario' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_060411_create_cargo_funcionario.php',
@@ -312,6 +303,7 @@ class ComposerStaticInit8df505a5e40f45966923507d9b968d23
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProduto' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_052003_create_produto.php',
         'CreateSaida' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_054818_create_saida.php',
+        'CreateTipoacidentes' => __DIR__ . '/../..' . '/database/migrations/2016_12_06_151553_create_tipoacidentes.php',
         'CreateTreinamento' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_055042_create_treinamento.php',
         'CreateTreinamentoFuncionario' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_055402_create_treinamento_funcionario.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
@@ -752,6 +744,7 @@ class ComposerStaticInit8df505a5e40f45966923507d9b968d23
         'PHP_Token_STRING' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_STRING_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_STRING_VARNAME' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_SUPER' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_SWITCH' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_Stream' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token/Stream.php',
         'PHP_Token_Stream_CachingFactory' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token/Stream/CachingFactory.php',
@@ -766,6 +759,7 @@ class ComposerStaticInit8df505a5e40f45966923507d9b968d23
         'PHP_Token_UNSET' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_UNSET_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_USE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_USE_FUNCTION' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_VAR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_VARIABLE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_WHERE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',

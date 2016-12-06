@@ -28,6 +28,7 @@ return array(
     'SuperClosure\\' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
     'Stringy\\' => array($vendorDir . '/danielstjules/stringy/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src/Psy'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
