@@ -24,7 +24,5 @@
 @stop
 
 @section('script')
-<script src="{{ asset('vendor/bootstrap/js/jquery.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.js') }}"></script>
 @stop
 

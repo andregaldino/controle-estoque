@@ -16,6 +16,8 @@
 </div>
 
 	@include('layouts/rodape')
+
+	<script src="{{ asset('vendor/bootstrap/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('vendor/bootstrap/js/bootstrap.js') }}"></script>
 	@yield('script')
 
