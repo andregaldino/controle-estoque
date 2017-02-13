@@ -83,7 +83,7 @@ class ProdutoController extends Controller
             $categorias = Categoria::all();
             return View('admin.produto.editar',compact('produto','categorias'));
         } catch (Exception $e) {
-            return redirect()->back();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -137,8 +137,5 @@ class ProdutoController extends Controller
             ->with('error',$e->getMessage());
         }
     }
-
     
-
-   
 }

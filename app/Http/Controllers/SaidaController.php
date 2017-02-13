@@ -141,8 +141,7 @@ class SaidaController extends Controller
             return View('admin.saida.busca',compact('saidas','produtos','periodo'));
         } catch (Exception $e) {
             $saidas = [];
-            dd($e);
-            return View('admin.saida.busca',compact('saidas'));
+            return View('admin.saida.busca',compact('saidas'))->with('error', $e->getMessage());
         }
     }
 

@@ -70,7 +70,7 @@ class ExameController extends Controller
             $exame = Exame::findOrFail($id);
             return View('admin.exame.editar',compact('exame'));
         } catch (Exception $e) {
-            return redirect()->back();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

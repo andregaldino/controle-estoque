@@ -6,6 +6,7 @@
 
 
 @section('conteudo')
+@include('admin/layouts/notificacoes')
 <form class="form-signin" role="form" method="POST" action="{{ route('singin') }}">
 	  <div class="col-lg-4 text-center">
 	  </div>

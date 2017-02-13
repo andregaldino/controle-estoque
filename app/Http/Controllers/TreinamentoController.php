@@ -73,7 +73,7 @@ class TreinamentoController extends Controller
             $treinamento = Treinamento::findOrFail($id);
             return View('admin.treinamento.editar',compact('treinamento'));
         } catch (Exception $e) {
-            return redirect()->back();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

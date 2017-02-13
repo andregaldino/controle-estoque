@@ -68,7 +68,7 @@ class EmpresaController extends Controller
             $empresa = Empresa::findOrFail($id);
             return View('admin.empresa.editar',compact('empresa'));
         } catch (Exception $e) {
-            return redirect()->back();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

@@ -68,7 +68,9 @@ class CategoriaController extends Controller
             $categoria = Categoria::findOrFail($id);
             return View('admin.categoria.editar',compact('categoria'));
         } catch (Exception $e) {
-            return redirect()->back();
+            return redirect()->back()
+            ->with('error', $e->getMessage())
+            ;
         }
     }
 
@@ -83,15 +85,6 @@ class CategoriaController extends Controller
     {
         try {
             $input = $request->all();
-            /*
-            $validator = Validator::make($input, $request->rules(), $request->messages());
-            // verificando a ocorrencia de falhas
-            if ($validator->fails()) {
-                dd($validator);
-                return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-            }
             */
             $categoria = Categoria::findOrFail($id);
             $categoria->nome = $input['nome'];
@@ -100,7 +93,6 @@ class CategoriaController extends Controller
             return redirect()->route('categorias.index');
 
         } catch (Exception $e) {
-            dd($e->getMessage());
             return redirect()->back()
             ->with('error', $e->getMessage())
             ;

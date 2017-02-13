@@ -34,6 +34,7 @@ class AuthController extends Controller
      */
     public function postSignin(UserRequestLogin $request)
     {
+        $error = "";
         $dados = $request->only('email','password');
         try {
             if(Sentinel::authenticate($dados, false))
@@ -45,14 +46,13 @@ class AuthController extends Controller
             
 
         } catch (NotActivatedException $e) {
-            dd($e);
+            $error = $e->getMessage();
         } catch (ThrottlingException $e2) {
-            dd($e2);
+            $error = $e2->getMessage();
         } catch (Exception $e3){
-            dd($e3);
+           $error = $e3->getMessage();
         }
-
-        return redirect()->back();
+        return redirect()->back()->with('error', $error);
     }
 
     /**
@@ -62,6 +62,7 @@ class AuthController extends Controller
      */
     public function postSignup(UserRequest $request)
     {
+        $error = "";
         $dados = $request->only('first_name','last_name','email','password');
         try {
             $user = Sentinel::registerAndActivate($dados);
@@ -74,13 +75,12 @@ class AuthController extends Controller
             return Redirect::route("dashboard")->with('success', "Usuario Cadastrado com sucesso");
 
         } catch (UserExistsException $e) {
-            dd($e);
+            $error = $e->getMessage();
         } catch (Exception $e2){
-            dd($e2);
+            $error = $e->getMessage();
         }
 
-        return redirect()->back();
-
+        return redirect()->back()->with('error', $error);
     }
 
     /**
@@ -121,7 +121,7 @@ class AuthController extends Controller
                 $m->subject('Account Password Recovery');
             });
         } catch (UserNotFoundException $e) {
-            dd($e);
+            return redirect()->back()->with('error', $e->getMessage());
         }
         return redirect()->back()->with('sucess','Email enviado');
     }

@@ -72,7 +72,7 @@ class CargoController extends Controller
             $cargo = Cargo::findOrFail($id);
             return View('admin.cargo.editar',compact('cargo'));
         } catch (Exception $e) {
-            return redirect()->back();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
