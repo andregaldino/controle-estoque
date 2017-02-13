@@ -85,7 +85,6 @@ class CategoriaController extends Controller
     {
         try {
             $input = $request->all();
-            */
             $categoria = Categoria::findOrFail($id);
             $categoria->nome = $input['nome'];
             $categoria->save();
