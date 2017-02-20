@@ -44,7 +44,7 @@ Lista de EPI
 			<td>{{ $produto->id }}</td>
 			<td>{{ $produto->nome }}</td>
 			<td>{{ $produto->medida }}</td>
-			<td><a href="{{https://consultaca.com/'.$produto->ca }}">{{ $produto->ca }}</a></td>
+			<td><a href="{{'https://consultaca.com/'.$produto->ca }}">{{ $produto->ca }}</a></td>
 			<td>{{ $produto->categoria->nome or "Nenhuma categoria alocada" }}</td>
 			<td>{{ $produto->qntd }}</td>
 			<td>
